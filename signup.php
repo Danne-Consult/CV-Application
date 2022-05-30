@@ -14,14 +14,13 @@
         include "manage/controller/signup_control.php";
         include "manage/controller/usersignup.php";
 
-        $signup = new SignUpController($fname,$lname,$gender,$email,$password,$passrepeat);
+        $user = new signUpController($fname,$lname,$gender,$email,$password,$passrepeat);
 
         //error handlers
-        $signup->Signup();
+        $user->signupUser($fname,$lname,$gender,$email,$password);
 
         //back to front page
         header("location:home.php?error=none");
-
     }
    
 

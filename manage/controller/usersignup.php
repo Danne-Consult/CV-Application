@@ -1,12 +1,12 @@
 <?php
 
-    class SignUpController extends Signup{
-        private $fname;
-        private $lname;
-        private $gender;
-        private $email;
-        private $password;
-        private $passrepeat;
+    class signUpController extends Signup{
+        public $fname;
+        public $lname;
+        public $gender;
+        public $email;
+        public $password;
+        public $passrepeat;
 
         public function __construct($fname, $lname, $gender, $email, $password, $passrepeat){
             $this->fname = $fname;
@@ -77,16 +77,14 @@
 
         public function userExists(){
             $result;
-            if($this->checkUser($this->email)){
-                $result = true;
-            }else{
+            if($this->checkUser($this->email) == true){
                 $result = false;
+            }else{
+                $result = true;
             }
 
             return $result;
         }
 
 
-    }
-
-    
+    }  

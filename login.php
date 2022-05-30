@@ -13,6 +13,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers App login - Open Talent Africa</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/jquery.min.js"></script>
 </head>
 <body class="loging">
     <div class="bgimg">
@@ -31,17 +38,17 @@
                             unset($_SESSION['message']);
                         }
                     ?>
-                <form action="#">
+                <form action="#" class="contactForm">
                     <label>Email</label><br />
                     <input type="email" name="emailaddress" id="emailadd"><br />
                     <label>Password</label><br />
-                    <input type="password" name="password" id="password"><br /><br />
+                    <input type="password" name="password" id="password"><br />
                     <button type="submit" class="submit">Login</button>
-                    <br />
-                    <a href="#"><i>Forgot password?</i></a>
+                    <br /><br />
+                    <p><a href="#"><i>Forgot password?</i></a></p>
                 </form>
             </div>
-            <div class="logcopy">&copy;2022 Open Talent CV App</div>
+            <div class="logcopy">&copy;2022 Open Talent Africa</div>
         </div>
     </div>
 </body>

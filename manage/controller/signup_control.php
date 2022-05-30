@@ -2,36 +2,29 @@
 
 class Signup extends DBconnect{
 
-    protected function setUser($fname, $lname, $gender, $email, $password){
-        $stmt = $this->connect()->prepare("INSERT INTO qwe_cvappusers(firstname, lastname, gender, email, passwd) VALUES(?,?,?,?,?);");
-
+    public function setUser($fname, $lname, $gender, $email, $password){
+        $this->connect();
         $hashedpw = password_hash($password, PASSWORD_DEFAULT);
-
-        if(!$stmt->excecute(array($fname, $lname, $gender, $email, $hashedpw))){
-            $stmt= null;
-            header("location:signup.php?error=stmtfailed");
+        $result=$this->conn->createData("qwe_cvappusers","(firstname, lastname, gender, email, passwd)","('".$fname."','".$lname."','". $gender."','".$email."','".$hashedpw."')" );
+        
+        if(!$result){
+           
+            header("location:signup.php?error=addfailed");
             exit();
         }
-
-        $smtp = null;
+        $result = null;
     }
 
-    protected function checkUser($email){
-        $stmt = $this->connect()->prepare("SELECT email FROM qwe_cvappusers WHERE email=?;");
-        if(!$stmt->excecute(array($email))){
-            $stmt= null;
-            header("location:signup.php?error=stmtfailed");
-            exit();
-        }
+    public function checkUser($email){
+        $this->connect();
 
-        $resultcheck;
-
-        if ($smtp->rowCount() > 0){
-            $resultcheck = false;
-        }else{
-            $resultcheck = true;
+       
+        $result = $this->conn->countData($email);
+        
+        if($result){
+           
         }
-        return $resultcheck;
+        return $result;
     }
 
 }
