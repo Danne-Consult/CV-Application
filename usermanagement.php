@@ -27,8 +27,9 @@
                     <div class="col-lg-12">
                         <h3>User Management</h3>
                         <?php
-                            include "includes/updateuser.php";
+                            include "includes/updateuser.inc";
                         ?>
+                        
                     </div> 
                 </div>
             </article>

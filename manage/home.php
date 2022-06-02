@@ -25,10 +25,10 @@
             <article>
                 <div class="row">
                     <div class="col-lg-4">
-                        <a href="addcv.php">
+                        <a href="addjob.php">
                             <div class="useractions">
-                                <h4>Create CV</h4>
-                                <p>Add your background information</p>
+                                <h4>Create Jobs</h4>
+                                <p>create a job record</p>
                             </div>
                         </a>
                     </div>
@@ -37,25 +37,25 @@
                         <a href="viewjobs.php">
                             <div class="useractions">
                                 <h4>View Jobs</h4>
-                                <p>Sort through our available jobs</p>
+                                <p>See jobs created</p>
                             </div>
                         </a>
                     </div>
 
                     <div class="col-lg-4">
-                        <a href="appliedjobs.php">
+                        <a href="viewusers.php">
                             <div class="useractions">
-                                <h4>View applied jobs</h4>
-                                <p>See jobs you applied for</p>
+                                <h4>View users</h4>
+                                <p>View User information</p>
                             </div>
                         </a>
                     </div>
 
                     <div class="col-lg-4">
-                        <a href="usermanagement.php">
+                        <a href="viewapplieduser.php">
                             <div class="useractions">
-                                <h4>User Management</h4>
-                                <p>Edit your password and email</p>
+                                <h4>View Applied Jobs</h4>
+                                <p>See users who applied to jobs</p>
                             </div>
                         </a>
                     </div>

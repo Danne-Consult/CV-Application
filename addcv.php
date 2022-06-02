@@ -26,8 +26,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>Add CV</h3>
-                        <?php
-                            include "includes/addcv.php";
+                        <?php 
+                            include "includes/addcv.inc";
                         ?>
                     </div> 
                 </div>
@@ -39,5 +39,28 @@
             <div class="copy">&copy;2022. Open Talent Africa</div>
         </article>
     </footer>
+
+    <script>
+        $(document).ready(function() {
+            			
+			$(".delete").click(function(){
+				return confirm("Are you sure you want to delete this record?");	
+			});
+			
+			$(document).on('click', '.moreschool' ,function(){
+				$('.com-edu').append('<div class="educont" ><hr /><div class="row"><div class="col-lg-6"><label for="work">School/institution</label><br /><input type="text" name="institution[]" /></div><div class="col-lg-4"><label for="comyear">Year of completion</label><br /><input type="text" name="comyear[]" /></div></div><div class="row"><div class="col-lg-6">  <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" ></textarea></div><div class="col-lg-6">       <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div>      </div>    </div></div>');
+			});
+			$(document).on('click','.deleteedu', function(){
+				$(this).closest(".educont").remove();
+			});
+
+            $(document).on('click', '.morework' ,function(){
+				$('.com-work').append('<div class="workcont" ><hr /><div class="row">   <div class="col-lg-6"> <label for="work">Job/Occupation</label><br />   <input type="text" name="work[]" /> </div> <div class="col-lg-4"> <label for="workyear">Year of completion</label><br />  <input type="text" name="workyear[]" /> </div>  </div> <div class="row"> <div class="col-lg-6">  <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea>  </div> <div class="col-lg-6">  <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div> <div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div> </div></div>');
+			});
+			$(document).on('click','.deletework', function(){
+				$(this).closest(".workcont").remove();
+			});
+        });
+    </script> 
 </body>
 </html>
