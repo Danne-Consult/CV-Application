@@ -1,4 +1,9 @@
 <form class="contactForm" action="#" method="POST">
+    <?php
+        $sql="SELECT * FROM ".$prefix."cvappusers WHERE id='$userid'";
+        $result=$db->conn->query($sql);
+        $rws =  $result->fetch_array();
+    ?>
     <div class="row">
         <div class="col-lg-6">
             <label for="cvtitle">CV Title</label><br />
@@ -9,15 +14,15 @@
     <div class="row">
         <div class="col-lg-3">
             <label for="fname">First name</label><br />
-            <input type="text" name="fname" />
+            <input type="text" name="fname" value="<?php echo $rws['firstname']; ?>" disabled />
         </div>
         <div class="col-lg-3">
             <label for="lname">Last Name</label><br />
-            <input type="text" name="lname" />
+            <input type="text" name="lname" value="<?php echo $rws['lastname']; ?>" disabled />
         </div>
         <div class="col-lg-3">
             <label for="email">Email</label><br />
-            <input type="email" name="email" />
+            <input type="email" name="email" value="<?php echo $rws['email']; ?>" disabled />
         </div>
         <div class="col-lg-3">
             <label for="dob">Date of Birth</label><br />

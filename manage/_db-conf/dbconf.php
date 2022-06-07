@@ -22,4 +22,7 @@
             die("Connection failed: " . $this->conn->connect_error);
         } 
     }
+    public function escape_string($value){
+        return $this->conn->real_escape_string($value);
+    }
 }

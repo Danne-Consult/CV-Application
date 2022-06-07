@@ -1,5 +1,9 @@
 <?php
    include "controller/sessioncheck.php";
+   include("manage/_db-conf/dbconf.php");
+   $db = new DBconnect();
+   $prefix = $db->prefix;
+   $userid = $_SESSION["user"];
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +35,9 @@
                     <div class="col-lg-12">
                         <h3>Add CV</h3>
                         <?php 
-                            
                            if(isset($_POST['submit'])){
-                            include("manage/_db-conf/dbconf.php");
-                            $db = new DBconnect();
+                              
+                            
                             date_default_timezone_set('Africa/Nairobi');
                            
                                $title = $db->escape_string($_POST["cvtitle"]);
@@ -64,7 +67,7 @@
                                $instcontext = "";
                                $workcontext = "";
 
-                               $currdate = date("Y-m-d h:i:sa", $d);
+                               $currdate = date("y-m-d h:i:s");
                            
                                for($i=0;$i<$numinstitute;$i++){
                                    if($institution[$i]!=""){
@@ -83,17 +86,18 @@
                                    }
                                    $workcontext .=  "||/~". $works ."/~" . $workyr ."/~". $workcom; 
                                }
-                               
-                               $register = $db->createData("qwe_cvuserrec","(userid, title, dateofbirth, mobile, email, nationality, address, postalcode, languages, interests, educationlevel, experience, referencesx, facebook, twitter, linkedin, datecreated)","('$userid','$title','$dob','$mobile','$email','$nationality','$address','$postalcode','$languages','$interests','$instcontext','$workcontext','$references','$facebook','$twitter','$linkedin','$currdate')");
+
+
+                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, email, nationality, address, postalcode, languages, interests, educationlevel, experience, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$email','$nationality','$address','$postalcode','$languages','$interests','$instcontext','$workcontext','$references','$facebook','$twitter','$linkedin','$currdate')";
+
+                               $register = $db->conn->query($sql);
                            
                                if($register){  
                                    echo "Registration Successful!";  
                                 }else{  
-                                   echo "Error: $register";  
-                                }   
+                                   echo "Error: Cannot save information";  
+                                }
                            }
-                        
-    
                             include "includes/addcv.inc";
                         ?>
                     </div> 

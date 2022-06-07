@@ -234,10 +234,11 @@ header .navigation nav{width: max-content; padding: 0; float: right; margin: 0em
 
 .topnav .rightfloater{float: right; width: 70%; padding-top: 4em;}
 .topnav .rightfloater ul{margin:0; float: right;}
-.topnav .rightfloater ul li{list-style:none; display:inline; padding: 0px 17px; position: relative;}
+.topnav .rightfloater ul li{list-style:none; display:inline; padding: 14px 17px; position: relative;}
+.topnav .rightfloater ul li a{padding: 20px 10px;}
 
 .topnav .rightfloater ul li:hover ul{display:block}
-.topnav .rightfloater ul li ul{	position:absolute;  background: rgb(254 254 254); display:none; height:auto;margin-left:0px;z-index:50;margin-top: 0px; text-align: left; transition: all 0.3s ease-in-out; padding: 19px; min-width: 262px; right: 0px;}
+.topnav .rightfloater ul li ul{	position:absolute;  background: rgb(254 254 254); display:none; height:auto; margin-left:0px; z-index:50;margin-top: 17px; text-align: left; transition: all 0.3s ease-in-out; padding: 19px; min-width: 262px; right: 0px;     box-shadow: #f1f1f1 1px 2px 11px;}
 
 .topnav .rightfloater ul li ul li{float: left; padding:0px;}
 .topnav .rightfloater ul li ul a{padding: 20px 10px; text-decoration: none; float: left; min-width: 210px;}
