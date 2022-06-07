@@ -1,3 +1,7 @@
+<?php
+   include "controller/sessioncheck.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +31,69 @@
                     <div class="col-lg-12">
                         <h3>Add CV</h3>
                         <?php 
+                            
+                           if(isset($_POST['submit'])){
+                            include("manage/_db-conf/dbconf.php");
+                            $db = new DBconnect();
+                            date_default_timezone_set('Africa/Nairobi');
+                           
+                               $title = $db->escape_string($_POST["cvtitle"]);
+                               $email = $db->escape_string($_POST["email"]);
+                               $dob = $db->escape_string($_POST["dob"]);
+                               $nationality = $db->escape_string($_POST["nationality"]);
+                               $mobile = $db->escape_string($_POST["mobileno"]);
+                               $address = $db->escape_string($_POST["address"]);
+                               $postalcode = $db->escape_string($_POST["postalcode"]);
+                               $languages = $db->escape_string($_POST["languages"]);
+                               $institution = $_POST["institution"];
+                               $schoolcomment = $_POST["schoolcomment"];
+                               $comyear = $_POST["comyear"];
+                               $work = $_POST["work"];
+                               $workyear = $_POST["workyear"];
+                               $workcomment = $_POST["workcomment"];
+                               $achievements = $db->escape_string($_POST["achievements"]);
+                               $facebook = $db->escape_string($_POST["facebook"]);
+                               $twitter = $db->escape_string($_POST["twitter"]);
+                               $linkedin = $db->escape_string($_POST["linkedin"]);
+                               $interests = $db->escape_string($_POST["interests"]);
+                               $references = $db->escape_string($_POST["references"]);
+                               
+                               $numinstitute = count($institution);
+                               $numwork = count($work);
+                           
+                               $instcontext = "";
+                               $workcontext = "";
+
+                               $currdate = date("Y-m-d h:i:sa", $d);
+                           
+                               for($i=0;$i<$numinstitute;$i++){
+                                   if($institution[$i]!=""){
+                                      $inst = $institution[$i];
+                                      $comyear = $comyear[$i];
+                                      $schoolcom = $schoolcomment[$i];
+                                   }
+                                  $instcontext .=  "||/~". $inst ."/~" . $comyear ."/~". $schoolcom; 
+                              }
+                           
+                              for($x=0;$x<$numwork;$x++){
+                                   if($work[$x]!=""){
+                                   $works = $work[$x];
+                                   $workyr = $workyear[$x];
+                                   $workcom = $workcomment[$x];
+                                   }
+                                   $workcontext .=  "||/~". $works ."/~" . $workyr ."/~". $workcom; 
+                               }
+                               
+                               $register = $db->createData("qwe_cvuserrec","(userid, title, dateofbirth, mobile, email, nationality, address, postalcode, languages, interests, educationlevel, experience, referencesx, facebook, twitter, linkedin, datecreated)","('$userid','$title','$dob','$mobile','$email','$nationality','$address','$postalcode','$languages','$interests','$instcontext','$workcontext','$references','$facebook','$twitter','$linkedin','$currdate')");
+                           
+                               if($register){  
+                                   echo "Registration Successful!";  
+                                }else{  
+                                   echo "Error: $register";  
+                                }   
+                           }
+                        
+    
                             include "includes/addcv.inc";
                         ?>
                     </div> 
@@ -43,14 +110,12 @@
     <script>
         $(document).ready(function() {
             			
-			$(".delete").click(function(){
-				return confirm("Are you sure you want to delete this record?");	
-			});
-			
+						
 			$(document).on('click', '.moreschool' ,function(){
 				$('.com-edu').append('<div class="educont" ><hr /><div class="row"><div class="col-lg-6"><label for="work">School/institution</label><br /><input type="text" name="institution[]" /></div><div class="col-lg-4"><label for="comyear">Year of completion</label><br /><input type="text" name="comyear[]" /></div></div><div class="row"><div class="col-lg-6">  <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" ></textarea></div><div class="col-lg-6">       <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div>      </div>    </div></div>');
 			});
 			$(document).on('click','.deleteedu', function(){
+                confirm("Are you sure you want to delete this?");
 				$(this).closest(".educont").remove();
 			});
 
@@ -58,6 +123,7 @@
 				$('.com-work').append('<div class="workcont" ><hr /><div class="row">   <div class="col-lg-6"> <label for="work">Job/Occupation</label><br />   <input type="text" name="work[]" /> </div> <div class="col-lg-4"> <label for="workyear">Year of completion</label><br />  <input type="text" name="workyear[]" /> </div>  </div> <div class="row"> <div class="col-lg-6">  <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea>  </div> <div class="col-lg-6">  <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div> <div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div> </div></div>');
 			});
 			$(document).on('click','.deletework', function(){
+                confirm("Are you sure you want to delete this record?");
 				$(this).closest(".workcont").remove();
 			});
         });

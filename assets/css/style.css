@@ -234,8 +234,13 @@ header .navigation nav{width: max-content; padding: 0; float: right; margin: 0em
 
 .topnav .rightfloater{float: right; width: 70%; padding-top: 4em;}
 .topnav .rightfloater ul{margin:0; float: right;}
-.topnav .rightfloater ul li{list-style:none; display:inline; padding: 0px 17px}
-.topnav .rightfloater ul li ul{display:none;}
+.topnav .rightfloater ul li{list-style:none; display:inline; padding: 0px 17px; position: relative;}
+
+.topnav .rightfloater ul li:hover ul{display:block}
+.topnav .rightfloater ul li ul{	position:absolute;  background: rgb(254 254 254); display:none; height:auto;margin-left:0px;z-index:50;margin-top: 0px; text-align: left; transition: all 0.3s ease-in-out; padding: 19px; min-width: 262px; right: 0px;}
+
+.topnav .rightfloater ul li ul li{float: left; padding:0px;}
+.topnav .rightfloater ul li ul a{padding: 20px 10px; text-decoration: none; float: left; min-width: 210px;}
 
 nav ul{list-style:none; margin: 0px auto;}
 nav ul li{float: left; display: inline; margin-bottom: 1em; padding: 5px 0px 20px 0px; border-bottom: #051620 solid 0.5px; width: 100%;}
@@ -287,9 +292,11 @@ nav .last a{background-color: #feed40; border-radius: 7px; transition: all 0.3s 
 nav .last a:hover{background-color:#fbf4a6;}
 
 
-.bgimg{height: 100vh; background:url(../images/img1.webp) no-repeat center; background-size:cover; position: absolute; width: 100%; top: 0px; left: 0px;}
+.bgimg{min-height: 100vh; background:url(../images/img1.webp) no-repeat center; background-size:cover; position: absolute; width: 100%; top: 0px; left: 0px;}
 .logbx{display: flex; flex-flow: column; width: 500px; align-items: center; flex-direction: column;  margin: 2em auto 0px auto;  padding: 30px; background-color: #fbfbfb;}
 .logo{text-align:center;}
+
+.logform{width: 66%;}
 .logbx .logoimg{width: 167px; margin-bottom: 30px;}
 .logbx h2{font-weight: 300; text-align: center;}
 .logbx .logcopy{font-size: 11px;}
@@ -335,6 +342,9 @@ nav .last a:hover{background-color:#fbf4a6;}
 .contactForm input[type="radio"]{width:20px;}
 .contactForm .submit:hover, .contactForm .submit:focus{background-color:#c8c496;}
 .disabledbtn{background-color:#ccc !important}
+
+.contactForm i{margin-left: -30px;cursor: pointer;}
+.contactForm i.italic{margin:0px;}
 
 footer{ padding: 0x;  position: relative; background-color:#24678C; color:#fff;}
 footer h4{color:#fff;}

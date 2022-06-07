@@ -1,3 +1,6 @@
+<?php
+   include "controller/sessioncheck.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +28,7 @@
             <article>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Add CV</h3>
+                        <h3>Apply Job</h3>
                         <?php 
                             include "includes/applyjob.inc";
                         ?>

@@ -1,3 +1,6 @@
+<?php
+   include "controller/sessioncheck.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +34,11 @@
                                 <th>CV Title</th>
                                 <th>Action</th>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <?php 
+                                include("manage/_db-conf/dbconf.php");
+                                $db = new DBconnect();
+                                $result = $db->getData("qwe_cvuserrec","")
+                            ?>
                         </table>
                     </div> 
                 </div>

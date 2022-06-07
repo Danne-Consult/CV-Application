@@ -1,4 +1,4 @@
-<form class="contactForm" method="POST">
+<form class="contactForm" action="#" method="POST">
     <div class="row">
         <div class="col-lg-6">
             <label for="cvtitle">CV Title</label><br />
@@ -26,19 +26,23 @@
     </div>
     <div class="row">
         
-        
-        <div class="col-lg-4">
-            <label for="address">Address</label><br />
-            <input type="text" name="address" />
+        <div class="col-lg-3">
+            <label for="lname">Tel/Mobile</label><br />
+            <input type="tel" name="mobileno" placeholder="eg. +25407..." />
         </div>
-        <div class="col-lg-4">
-            <label for="postalcode">Postal Code</label><br />
-            <input type="text" name="postalcode" />
-        </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <label for="nationality">Nationality</label><br />
             <input type="text" name="nationality" />
         </div>
+        <div class="col-lg-3">
+            <label for="address">Address</label><br />
+            <input type="text" name="address" />
+        </div>
+        <div class="col-lg-3">
+            <label for="postalcode">Postal Code</label><br />
+            <input type="text" name="postalcode" />
+        </div>
+        
         
         <div class="col-lg-4">
             <label for="languages">Languages</label><br />
@@ -131,6 +135,14 @@
     <div class="row">
         <div class="col-lg-12">
             <textarea name="interests" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+        </div>
+    </div>
+
+    <hr />
+    <h4>References</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <textarea name="references" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
         </div>
     </div>
 

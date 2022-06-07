@@ -1,3 +1,7 @@
+<?php
+   include "controller/sessioncheck.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

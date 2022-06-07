@@ -1,11 +1,9 @@
-<?php
-	session_start();
-
-	if(isset($_SESSION['user'])){
-		header('location:index.php');
-	}
+<?php 
+session_start();
+if(isset($_SESSION['username'])){
+    header('location:home.php');
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,18 +36,48 @@
                             unset($_SESSION['message']);
                         }
                     ?>
-                <form action="#" class="contactForm">
-                    <label>Email</label><br />
-                    <input type="email" name="emailaddress" id="emailadd"><br />
-                    <label>Password</label><br />
-                    <input type="password" name="password" id="password"><br />
-                    <button type="submit" class="submit">Login</button>
-                    <br /><br />
-                    <p><a href="#"><i>Forgot password?</i></a></p>
+                <form action="controller/login.php" method="POST" class="contactForm">
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <label>Email</label><br />
+                            <input type="email" name="emailaddress" id="emailadd" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <label>Password</label><br />
+                            <input type="password" name="password" id="password" required><i class="fa-solid fa-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                        <button type="submit" name="login" class="submit">Login</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-11 aligncenter">
+                            <br /><br />
+                            <p><a href="#"><i class="italic">Forgot password?</i></a></p>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="logcopy">&copy;2022 Open Talent Africa</div>
         </div>
     </div>
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the icon
+            this.classList.toggle("fa-eye-slash");
+        });
+    </script>
 </body>
 </html>
