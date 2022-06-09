@@ -55,6 +55,13 @@
         </div>-->
     </div>
     <hr />
+    <h4>Brief About Me</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <textarea name="aboutme" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+        </div>
+    </div>
+    <hr />
     <h4>Education Background</h4>
     <div class="com-edu">
         <div class="row">
@@ -64,8 +71,16 @@
             </div>
         
             <div class="col-lg-4">
-            <label for="comyear">Year of completion</label><br />
-            <input type="text" name="comyear[]" />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="comyearfrom">Year of completion</label><br />
+                        <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" value="2016" />
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="comyearto">Year of completion</label><br />
+                        <input type="number" name="comyearto[]" min="1900" max="2099" step="1" value="2016" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

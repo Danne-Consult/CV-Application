@@ -41,20 +41,24 @@
                             date_default_timezone_set('Africa/Nairobi');
                            
                                $title = $db->escape_string($_POST["cvtitle"]);
-                               $email = $db->escape_string($_POST["email"]);
                                $dob = $db->escape_string($_POST["dob"]);
                                $nationality = $db->escape_string($_POST["nationality"]);
                                $mobile = $db->escape_string($_POST["mobileno"]);
                                $address = $db->escape_string($_POST["address"]);
                                $postalcode = $db->escape_string($_POST["postalcode"]);
                                $languages = $db->escape_string($_POST["languages"]);
+                               $aboutme = $db->escape_string($_POST["aboutme"]);
                                $institution = $_POST["institution"];
                                $schoolcomment = $_POST["schoolcomment"];
-                               $comyear = $_POST["comyear"];
+                               $comyearfrom = $_POST["comyearfrom"];
+                               $comyearto = $_POST["comyearto"];
                                $work = $_POST["work"];
-                               $workyear = $_POST["workyear"];
+                               $workyearfrom = $_POST["workyearfrom"];
+                               $workyearto = $_POST["workyearto"];
                                $workcomment = $_POST["workcomment"];
                                $achievements = $db->escape_string($_POST["achievements"]);
+                               $skill = $_POST["skill"];
+                               $capacity = $_POST["capacity"];
                                $facebook = $db->escape_string($_POST["facebook"]);
                                $twitter = $db->escape_string($_POST["twitter"]);
                                $linkedin = $db->escape_string($_POST["linkedin"]);
@@ -63,32 +67,44 @@
                                
                                $numinstitute = count($institution);
                                $numwork = count($work);
+                               $numskills = count($skill);
                            
                                $instcontext = "";
                                $workcontext = "";
+                               $skillcontext = "";
 
                                $currdate = date("y-m-d h:i:s");
                            
                                for($i=0;$i<$numinstitute;$i++){
                                    if($institution[$i]!=""){
                                       $inst = $institution[$i];
-                                      $comyear = $comyear[$i];
+                                      $comyearfr = $comyearfrom[$i];
+                                      $comyearto = $comyearto[$i];
                                       $schoolcom = $schoolcomment[$i];
                                    }
-                                  $instcontext .=  "||/~". $inst ."/~" . $comyear ."/~". $schoolcom; 
+                                  $instcontext .=  "||/~". $inst ."/~" . $comyearfr ."-". $comyearto ."/~". $schoolcom; 
                               }
                            
                               for($x=0;$x<$numwork;$x++){
                                    if($work[$x]!=""){
                                    $works = $work[$x];
-                                   $workyr = $workyear[$x];
+                                   $workyfr = $workyearfrom[$x];
+                                   $workyto = $workyearto[$x];
                                    $workcom = $workcomment[$x];
                                    }
-                                   $workcontext .=  "||/~". $works ."/~" . $workyr ."/~". $workcom; 
+                                   $workcontext .=  "||/~". $works ."/~" . $workyfr ."-". $workyto ."/~". $workcom; 
                                }
 
+                               for($y=0;$y<$numskills;$y++){
+                                if($skill[$y]!=""){
+                                $skills = $skill[$y];
+                                $range = $capacity[$y];
+                                }
+                                $skillcontext .=  "||/~". $skills ."/~" . $range; 
+                            }
 
-                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, email, nationality, address, postalcode, languages, interests, educationlevel, experience, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$email','$nationality','$address','$postalcode','$languages','$interests','$instcontext','$workcontext','$references','$facebook','$twitter','$linkedin','$currdate')";
+                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$skillcontext','$references','$facebook','$twitter','$linkedin','$currdate')";
+                           
 
                                $register = $db->conn->query($sql);
                            
@@ -116,7 +132,7 @@
             			
 						
 			$(document).on('click', '.moreschool' ,function(){
-				$('.com-edu').append('<div class="educont" ><hr /><div class="row"><div class="col-lg-6"><label for="work">School/institution</label><br /><input type="text" name="institution[]" /></div><div class="col-lg-4"><label for="comyear">Year of completion</label><br /><input type="text" name="comyear[]" /></div></div><div class="row"><div class="col-lg-6">  <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" ></textarea></div><div class="col-lg-6">       <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div>      </div>    </div></div>');
+				$('.com-edu').append('<div class="educont" ><hr /><div class="row"> <div class="col-lg-6"><label for="work">School/institution</label><br />  <input type="text" name="institution[]" />  </div>     <div class="col-lg-4"><div class="row"><div class="col-lg-6"><label for="comyearfrom">From</label><br /><input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" /></div><div class="col-lg-6"><label for="comyearto">To</label><br /><input type="number" name="comyearto[]" min="1900" max="2099" step="1" /> </div></div></div> </div><div class="row"><div class="col-lg-6"> <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" ></textarea> </div><div class="col-lg-6"> <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div> </div></div></div>');
 			});
 			$(document).on('click','.deleteedu', function(){
                 confirm("Are you sure you want to delete this?");
@@ -124,12 +140,28 @@
 			});
 
             $(document).on('click', '.morework' ,function(){
-				$('.com-work').append('<div class="workcont" ><hr /><div class="row">   <div class="col-lg-6"> <label for="work">Job/Occupation</label><br />   <input type="text" name="work[]" /> </div> <div class="col-lg-4"> <label for="workyear">Year of completion</label><br />  <input type="text" name="workyear[]" /> </div>  </div> <div class="row"> <div class="col-lg-6">  <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea>  </div> <div class="col-lg-6">  <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div> <div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div> </div></div>');
+				$('.com-work').append('<div class="workcont" ><hr /><div class="row"><div class="col-lg-6"><label for="work">Job/Occupation</label><br /><input type="text" name="work[]" /></div><div class="col-lg-4"><div class="row"> <div class="col-lg-6"><label for="workyearcorfrom">From</label><br /> <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" /> </div> <div class="col-lg-6"> <label for="workyearto">To</label><br /> <input type="number" name="workyearto[]" min="1900" max="2099" step="1" /> </div> </div></div></div> <div class="row"><div class="col-lg-6"> <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea></div> <div class="col-lg-6"> <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div>  </div></div>');
 			});
 			$(document).on('click','.deletework', function(){
                 confirm("Are you sure you want to delete this record?");
 				$(this).closest(".workcont").remove();
 			});
+
+
+            $(document).on('click', '.moreskills' ,function(){
+				$('.skillbar').append('<div class="skillcont" ><div class="row"><div class="col-lg-4"><label for="skilltitle">Skill Name</label><br /><input type="text" name="skill[] "/></div><div class="col-lg-4"><label for="capacity">Capacity</label><br /><input class="range" type="range" name="capacity[]" min="0" max="100" /></div><div class="col-lg-4"><div class="addbtnbx moreskills"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deleteskill"><i class="fa-solid fa-circle-minus"></i></div>');
+			});
+			$(document).on('click','.deleteskill', function(){
+                confirm("Are you sure you want to delete this record?");
+				$(this).closest(".skillcont").remove();
+			});
+
+
+
+
+            $(document).on('input', '.range', function() {
+                    
+            });
         });
     </script> 
 </body>

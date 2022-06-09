@@ -64,6 +64,13 @@
         </div>-->
     </div>
     <hr />
+    <h4>Brief About Me</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <textarea name="aboutme" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+        </div>
+    </div>
+    <hr />
     <h4>Education Background</h4>
     <div class="com-edu">
         <div class="row">
@@ -73,8 +80,16 @@
             </div>
         
             <div class="col-lg-4">
-            <label for="comyear">Year of completion</label><br />
-            <input type="text" name="comyear[]" />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="comyearfrom">From</label><br />
+                        <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" />
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="comyearto">To</label><br />
+                        <input type="number" name="comyearto[]" min="1900" max="2099" step="1" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -95,10 +110,18 @@
             <label for="work">Job/Occupation</label><br />
             <input type="text" name="work[]" />
             </div>
-        
+
             <div class="col-lg-4">
-            <label for="workyear">Year of completion</label><br />
-            <input type="text" name="workyear[]" />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="workyearcorfrom">From</label><br />
+                        <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" />
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="workyearto">To</label><br />
+                        <input type="number" name="workyearto[]" min="1900" max="2099" step="1" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -119,22 +142,40 @@
         </div>
     </div>
     <hr />
+    <h4>Skills Aquired</h4>
+    <div class="skillbar">
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="skilltitle">Skill Name</label><br />
+                <input type="text" name="skill[] "/>
+            </div>
+            <div class="col-lg-4">
+                <label for="capacity">Proficiency</label><br />
+                <input class="range" type="range" name="capacity[]" min="0" max="100" />
+            </div>
+             <div class="col-lg-4">
+                <div class="addbtnbx moreskills"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div>
+            </div>
+        </div>
+    </div>
+    <hr />
     <h4>Social Media</h4>
 
     <div class="row">
         <div class="col-lg-4">
             <label for="facebook">Facebook</label><br />
-            <input type="text" name="facebook" />
+            <input type="text" name="facebook" placeholder="https://...." />
         </div>
         <div class="col-lg-4">
             <label for="twitter">Twitter</label><br />
-            <input type="text" name="twitter" />
+            <input type="text" name="twitter" placeholder="https://...." />
         </div>
         <div class="col-lg-4">
             <label for="linkedin">Linkedin</label><br />
-            <input type="text" name="linkedin" />
+            <input type="text" name="linkedin" placeholder="https://...." />
         </div>
     </div>
+    
     <hr />
     <h4>interests</h4>
     <div class="row">

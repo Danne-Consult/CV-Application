@@ -37,7 +37,16 @@
                             <?php 
                                 include("manage/_db-conf/dbconf.php");
                                 $db = new DBconnect();
-                                $result = $db->getData("qwe_cvuserrec","")
+                                $prefix = $db->prefix;
+                                $userid= $_SESSION['user'];
+                                $sql = "SELECT * FROM ".$prefix."cvuserrec WHERE userid = '$userid'";
+                                $result = $db->conn->query($sql);
+                                while ($rws = $result->fetch_array()) {
+                                    $tr ="<tr><td>".$rws['title']."</td><td><a title='View CV' href='viewcv.php?recid=".$rws['id']."'><i class='fa-solid fa-eye'></i></a> &nbsp; &nbsp; <a title='Edit CV' href='edit.php?recid=".$rws['id']."'><i class='fa-solid fa-pen-to-square'></i></a> &nbsp;&nbsp; <a class='confirmation' title='Delete CV' href='controller/delete.php?recid=".$rws['id']."'><i class='fa-solid fa-trash'></i></a></td></tr>";
+
+                                    echo $tr;
+
+                                }
                             ?>
                         </table>
                     </div> 
@@ -50,5 +59,11 @@
             <div class="copy">&copy;2022. Open Talent Africa</div>
         </article>
     </footer>
+
+    <script>
+        $('.confirmation').on('click', function () {
+            return confirm('Are you sure you want to delete this CV?');
+        });
+    </script>
 </body>
 </html>
