@@ -33,11 +33,11 @@
         
         <div class="col-lg-3">
             <label for="lname">Tel/Mobile</label><br />
-            <input type="tel" name="mobileno" placeholder="eg. +25407..." />
+            <input type="tel" name="mobileno" placeholder="eg. +25407..." required />
         </div>
         <div class="col-lg-3">
             <label for="nationality">Nationality</label><br />
-            <input type="text" name="nationality" />
+            <input type="text" name="nationality" required />
         </div>
         <div class="col-lg-3">
             <label for="address">Address</label><br />
@@ -45,7 +45,7 @@
         </div>
         <div class="col-lg-3">
             <label for="postalcode">Postal Code</label><br />
-            <input type="text" name="postalcode" />
+            <input type="number" name="postalcode" />
         </div>
         
         
@@ -67,7 +67,7 @@
     <h4>Brief About Me</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="aboutme" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+            <textarea name="aboutme" id="editor" cols="30" rows="3" maxlength="500"></textarea><br />*Max 500 characters
         </div>
     </div>
     <hr />
@@ -76,18 +76,18 @@
         <div class="row">
             <div class="col-lg-6">
             <label for="work">School/institution</label><br />
-            <input type="text" name="institution[]" />
+            <input type="text" name="institution[]" required />
             </div>
         
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="comyearfrom">From</label><br />
-                        <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" />
+                        <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" required />
                     </div>
                     <div class="col-lg-6">
                         <label for="comyearto">To</label><br />
-                        <input type="number" name="comyearto[]" min="1900" max="2099" step="1" />
+                        <input type="number" name="comyearto[]" min="1900" max="2099" step="1" required />
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
     <h4>Personal Achievements</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="achievements" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+            <textarea name="achievements" id="editor" cols="30" rows="3" maxlength="200"></textarea><br />*Max 500 characters
         </div>
     </div>
     <hr />
@@ -164,23 +164,23 @@
     <div class="row">
         <div class="col-lg-4">
             <label for="facebook">Facebook</label><br />
-            <input type="text" name="facebook" placeholder="https://...." />
+            <input type="url" name="facebook" placeholder="https://...." />
         </div>
         <div class="col-lg-4">
             <label for="twitter">Twitter</label><br />
-            <input type="text" name="twitter" placeholder="https://...." />
+            <input type="url" name="twitter" placeholder="https://...." />
         </div>
         <div class="col-lg-4">
             <label for="linkedin">Linkedin</label><br />
-            <input type="text" name="linkedin" placeholder="https://...." />
+            <input type="url" name="linkedin" placeholder="https://...." />
         </div>
     </div>
     
     <hr />
-    <h4>interests</h4>
+    <h4>Interests</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="interests" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+            <textarea name="interests" id="editor" cols="30" rows="3" maxlength="500"></textarea><br />*Max 500 characters
         </div>
     </div>
 
@@ -188,7 +188,7 @@
     <h4>References</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="references" id="" cols="30" rows="3" maxlength="200"></textarea><br />max 200 characters
+            <textarea name="references" id="editor" cols="30" rows="3" maxlength="500"></textarea><br />*optional. Max 500 characters
         </div>
     </div>
 

@@ -51,18 +51,19 @@ if(isset($_SESSION['username'])){
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-11">
-                        <button type="submit" name="login" class="submit">Login</button>
+                        <button type="submit" name="login" class="submit">Login</button> &nbsp;&nbsp;<a style="font-size:13px;" href="#"><i class="italic">Forgot password?</i></a>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-11 aligncenter">
                             <br /><br />
-                            <p><a href="#"><i class="italic">Forgot password?</i></a></p>
+                            <p><a href="signup.php"><i class="italic">Signup</i></a></p><br />
+                            
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="logcopy">&copy;2022 Open Talent Africa</div>
+            <div class="logcopy">&copy;2022 Danne Consult Ltd</div>
         </div>
     </div>
     <script>

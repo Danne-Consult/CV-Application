@@ -38,6 +38,15 @@
                     </div>
 
                     <div class="col-lg-4">
+                        <a href="cvmanagement.php">
+                            <div class="useractions">
+                                <h4>My CVs</h4>
+                                <p>Vew and manage CVs</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4">
                         <a href="viewjobs.php">
                             <div class="useractions">
                                 <h4>View Jobs</h4>

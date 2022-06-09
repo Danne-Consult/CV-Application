@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/jquery.min.js"></script>
+    
 </head>
 <body>
    <?php
@@ -79,10 +80,10 @@
                                    if($institution[$i]!=""){
                                       $inst = $institution[$i];
                                       $comyearfr = $comyearfrom[$i];
-                                      $comyearto = $comyearto[$i];
+                                      $comto = $comyearto[$i];
                                       $schoolcom = $schoolcomment[$i];
                                    }
-                                  $instcontext .=  "||/~". $inst ."/~" . $comyearfr ."-". $comyearto ."/~". $schoolcom; 
+                                  $instcontext .=  "||/~". $inst ."/~" . $comyearfr ."-". $comto ."/~". $schoolcom; 
                               }
                            
                               for($x=0;$x<$numwork;$x++){
@@ -103,9 +104,8 @@
                                 $skillcontext .=  "||/~". $skills ."/~" . $range; 
                             }
 
-                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$skillcontext','$references','$facebook','$twitter','$linkedin','$currdate')";
-                           
-
+                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, achievements, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$achievements','$skillcontext','$references','$facebook','$twitter','$linkedin','$currdate')";
+                       
                                $register = $db->conn->query($sql);
                            
                                if($register){  
@@ -126,42 +126,48 @@
             <div class="copy">&copy;2022. Open Talent Africa</div>
         </article>
     </footer>
-
+    <script src="manage/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
+        
         $(document).ready(function() {
             			
-						
+			tinymce.init({
+            selector: 'textarea#editor',
+            menubar: false, 
+            add_form_submit_trigger : true,
+            plugins: 'lists advlist',
+            toolbar: 'insertfile a11ycheck undo redo | bold italic | forecolor backcolor | template codesample | alignleft aligncenter alignright alignjustify | bullist numlist | link image'
+  
+            });
+
 			$(document).on('click', '.moreschool' ,function(){
 				$('.com-edu').append('<div class="educont" ><hr /><div class="row"> <div class="col-lg-6"><label for="work">School/institution</label><br />  <input type="text" name="institution[]" />  </div>     <div class="col-lg-4"><div class="row"><div class="col-lg-6"><label for="comyearfrom">From</label><br /><input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" /></div><div class="col-lg-6"><label for="comyearto">To</label><br /><input type="number" name="comyearto[]" min="1900" max="2099" step="1" /> </div></div></div> </div><div class="row"><div class="col-lg-6"> <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" ></textarea> </div><div class="col-lg-6"> <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div> </div></div></div>');
 			});
 			$(document).on('click','.deleteedu', function(){
-                confirm("Are you sure you want to delete this?");
-				$(this).closest(".educont").remove();
+                if(confirm("Are you sure you want to delete this?") == true){
+				    $(this).closest(".educont").remove();
+                };
 			});
 
             $(document).on('click', '.morework' ,function(){
 				$('.com-work').append('<div class="workcont" ><hr /><div class="row"><div class="col-lg-6"><label for="work">Job/Occupation</label><br /><input type="text" name="work[]" /></div><div class="col-lg-4"><div class="row"> <div class="col-lg-6"><label for="workyearcorfrom">From</label><br /> <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" /> </div> <div class="col-lg-6"> <label for="workyearto">To</label><br /> <input type="number" name="workyearto[]" min="1900" max="2099" step="1" /> </div> </div></div></div> <div class="row"><div class="col-lg-6"> <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea></div> <div class="col-lg-6"> <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div>  </div></div>');
 			});
 			$(document).on('click','.deletework', function(){
-                confirm("Are you sure you want to delete this record?");
-				$(this).closest(".workcont").remove();
+                if(confirm("Are you sure you want to delete this record?") == true){
+				    $(this).closest(".workcont").remove();
+                };
 			});
-
-
+            
+            
             $(document).on('click', '.moreskills' ,function(){
-				$('.skillbar').append('<div class="skillcont" ><div class="row"><div class="col-lg-4"><label for="skilltitle">Skill Name</label><br /><input type="text" name="skill[] "/></div><div class="col-lg-4"><label for="capacity">Capacity</label><br /><input class="range" type="range" name="capacity[]" min="0" max="100" /></div><div class="col-lg-4"><div class="addbtnbx moreskills"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deleteskill"><i class="fa-solid fa-circle-minus"></i></div>');
+				$('.skillbar').append('<div class="skillcont" ><div class="row"><div class="col-lg-4"><label for="skilltitle">Skill Name</label><br /><input type="text" name="skill[] "/></div><div class="col-lg-4"><label for="capacity">Capacity</label><br /><input class="range" type="range" name="capacity[]" min="0" max="100" /></div><div class="col-lg-4"><div class="addbtnbx moreskills"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deleteskill"><i class="fa-solid fa-circle-minus"></i></div></div></div></div>');
 			});
 			$(document).on('click','.deleteskill', function(){
-                confirm("Are you sure you want to delete this record?");
-				$(this).closest(".skillcont").remove();
+                if(confirm("Are you sure you want to delete this record?") == true){
+                    $(this).closest(".skillcont").remove(); 
+                };
+				
 			});
-
-
-
-
-            $(document).on('input', '.range', function() {
-                    
-            });
         });
     </script> 
 </body>

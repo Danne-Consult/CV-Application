@@ -24,7 +24,7 @@
 			    $currdatetime= date("y-m-d h:i:s");
                 
                 if(!$_SESSION['userid'] == ""){
-                    $sqlx= "UPDATE ".$prefix."cvappusers SET lastlogintime='$currdatetime' WHERE email='$email'";
+                    $sqlx= "UPDATE ".$prefix."cvappusers SET lastlogintime='$currdatetime' WHERE email='$user'";
                     $db->conn->query($sqlx);
                     header("location:../home.php");  	  
                 }else{

@@ -42,7 +42,7 @@
                                 $sql = "SELECT * FROM ".$prefix."cvuserrec WHERE userid = '$userid'";
                                 $result = $db->conn->query($sql);
                                 while ($rws = $result->fetch_array()) {
-                                    $tr ="<tr><td>".$rws['title']."</td><td><a title='View CV' href='viewcv.php?recid=".$rws['id']."'><i class='fa-solid fa-eye'></i></a> &nbsp; &nbsp; <a title='Edit CV' href='edit.php?recid=".$rws['id']."'><i class='fa-solid fa-pen-to-square'></i></a> &nbsp;&nbsp; <a class='confirmation' title='Delete CV' href='controller/delete.php?recid=".$rws['id']."'><i class='fa-solid fa-trash'></i></a></td></tr>";
+                                    $tr ="<tr><td>".$rws['title']."</td><td><a title='View CV' href='viewcv.php?recid=".$rws['id']."'><i class='fa-solid fa-eye'></i></a> &nbsp; &nbsp; <a title='Edit CV' href='updatecv.php?recid=".$rws['id']."'><i class='fa-solid fa-pen-to-square'></i></a> &nbsp;&nbsp; <a class='confirmation' title='Delete CV' href='controller/deletecv.php?recid=".$rws['id']."'><i class='fa-solid fa-trash'></i></a></td></tr>";
 
                                     echo $tr;
 

@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="bgimg">
-        <div class="logbx">
+        <div class="signform">
             <div class="logform">
                 <div class="logo"><a href="Home.php"><img src="assets/images/logo.svg" alt="Open talent Africa" class="logoimg"></a></div>
                 <h2>Signup</h2>
@@ -63,7 +63,7 @@
                     <br />
                 </form>
             </div>
-            <div class="logcopy">&copy;2022 Open Talent CV App</div>
+            <div class="logcopy">&copy;2022 Danne Consult Ltd</div>
         </div>
     </div>
 

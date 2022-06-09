@@ -126,6 +126,9 @@
                                             }
                                     ?>
                                     <hr /><br />            
+                                    <h4>Achievements</h4>
+                                    <p><?php echo $rws['achievements'];?></p>
+                                    <hr /><br />            
                                     <h4>References</h4>
                                     <p><?php echo $rws['referencesx'];?></p>
                                 </div>

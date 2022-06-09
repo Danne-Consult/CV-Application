@@ -291,12 +291,20 @@ nav .last a:hover{background-color:#fbf4a6;}
 
 .bgimg{min-height: 100vh; background:url(../images/img1.webp) no-repeat center; background-size:cover; position: absolute; width: 100%; top: 0px; left: 0px;}
 .logbx{display: flex; flex-flow: column; width: 500px; align-items: center; flex-direction: column;  margin: 2em auto 0px auto;  padding: 30px; background-color: #fbfbfb;}
-.logo{text-align:center;}
+.logbx .logo{text-align:center;}
 
 .logform{width: 66%;}
 .logbx .logoimg{width: 167px; margin-bottom: 30px;}
 .logbx h2{font-weight: 300; text-align: center;}
 .logbx .logcopy{font-size: 11px;}
+
+.signform{display: flex; flex-flow: column; width: 43%; align-items: center; flex-direction: column; margin: 2em auto 0px auto; padding: 30px; background-color: #fbfbfb;}
+.signform .logo{text-align:center;}
+
+.logform{width: 66%;}
+.signform .logoimg{width: 167px; margin-bottom: 30px;}
+.signform h2{font-weight: 300; text-align: center;}
+.signform .logcopy{font-size: 11px;}
 
 .mainbar a{text-decoration: none;}
 
