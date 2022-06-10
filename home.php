@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <a href="usermanagement.php">
+                        <a href="usermanager.php">
                             <div class="useractions">
                                 <h4>User Management</h4>
                                 <p>Edit your password and email</p>

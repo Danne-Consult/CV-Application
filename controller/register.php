@@ -1,16 +1,18 @@
 <?php
-    include "../manage/_db-conf/dbconf.php";
-   $db = new DBconnect;
-
     if(isset($_POST["submit"])){
 
+        include "../manage/_db-conf/dbconf.php";
+        $db = new DBconnect;
+
         //grabbing data
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $gender = $_POST["gender"];
-        $email = $_POST["emailaddress"];
-        $password = $_POST["passwd"];
-        $passrepeat = $_POST["repasswd"];
+        $fname = $db->escape_string($_POST["fname"]);
+        $lname = $db->escape_string($_POST["lname"]);
+        $gender = $db->escape_string($_POST["gender"]);
+        $email = $db->escape_string($_POST["emailaddress"]);
+        $country = $db->escape_string($_POST["country"]);
+        $sector = $db->escape_string($_POST["sector"]);
+        $password = $db->escape_string($_POST["passwd"]);
+        $passrepeat = $db->escape_string($_POST["repasswd"]);
         $randomid= "";
 
         function generateRandomString($length = 10) {
@@ -35,7 +37,7 @@
             }
             return $result;
         }
-        function resister($fname,$lname,$gender,$email,$password,$randomid){
+        function resister($fname,$lname,$gender,$country,$sector,$email,$password,$randomid){
 
             $db = new DBconnect;
             $prefix = $db->prefix;
@@ -43,7 +45,7 @@
 			$currdatetime= date("y-m-d h:i:s");
 
             $hashedpw = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO ".$prefix."cvappusers (firstname, lastname, gender, email, passwd, usercode, createdon) VALUES ('$fname','$lname','$gender','$email','$hashedpw','$randomid','$currdatetime')";
+            $sql = "INSERT INTO ".$prefix."cvappusers (firstname, lastname, gender, email, country, sector, passwd, usercode, createdon) VALUES ('$fname','$lname','$gender','$email','$country','$sector','$hashedpw','$randomid','$currdatetime')";
 
             $result = $db->conn->query($sql);
             if(!$result){
@@ -78,10 +80,6 @@
 
         $randomid = generateRandomString();
         checkUser($email);
-        resister($fname,$lname,$gender,$email,$password,$randomid);
-  
-
-
-        //header("location:home.php?error=none");
+        resister($fname,$lname,$gender,$country,$sector,$email,$password,$randomid);
     }
 ?>
