@@ -35,21 +35,27 @@
                             $prefix = $db->prefix;
 
                             $jobid = $_GET['recid'];
-
                             $sql = "SELECT * FROM ".$prefix."jobs WHERE id = '$jobid'";
 
                             $result = $db->conn->query($sql);
                             $rws = $result->fetch_array();
                         ?>
+                        <p class='alignright'><a href="applyjob.php?jobid=<?php echo $rws['id']; ?>" class="btn-yellow_rounded">Apply Job</a></p>
                         <h2><?php echo $rws['job_title']; ?></h2>
-                        <p class="smalltext">Posted on: <?php echo $rws['createdon']; ?></p>
+                        <p class="smalltext">Posted on: <?php echo date('D d-M-Y', strtotime($rws['createdon']))  ?> &nbsp;&nbsp;Tags: <?php echo $rws['job_tags']; ?></p>
                         <p>
+                            Departmnent: <b><?php echo $rws['job_category']; ?></b> <br />
                             City: <b><?php echo $rws['job_city'] ?></b> <br />
                             Country: <b><?php echo $rws['job_country'] ?></b> <br />
-                            Submission deadline: <b><?php echo $rws['submitdate']; ?></b> <br />
+                            Submission deadline: <b><?php echo date('D d-M-Y', strtotime($rws['submitdate']))  ?></b> <br />
                         </p>
-                        <br /><hr />
+                        <hr />
                         <?php echo $rws['job_desc']; 
+                        ?>
+                        <br /><br />
+                        <p class='alignright'><a href="applyjob.php?jobid=<?php echo $rws['id']; ?>" class="btn-yellow_rounded">Apply Job</a></p>
+
+                        <?php
                         }else{
                             header("location:viewjobs.php?error=Select a job to view");
                             }

@@ -28,7 +28,7 @@
             <article>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>All CVs</h3>
+                        <h3>My CVs</h3>
                         <table>
                             <tr>
                                 <th>CV Title</th>

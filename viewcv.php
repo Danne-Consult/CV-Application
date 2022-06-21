@@ -44,7 +44,7 @@
                                     <h4>Bio</h4>
                                     <p class="bio"> 
                                         Gender: <?php echo $rws['gender'];?><br />
-                                        Date of Birth: <?php echo $rws['dateofbirth'];?><br />
+                                        Date of Birth: <?php echo date('D d-M-Y', strtotime($rws['dateofbirth'])) ?><br />
                                         Email: <?php echo $rws['email'];?><br />
                                         Mobile: <?php echo $rws['mobile'];?><br />
                                         Nationality: <?php echo $rws['nationality'];?><br />

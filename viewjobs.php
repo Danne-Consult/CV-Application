@@ -60,7 +60,7 @@
                                         echo "<p>No jobs listed</p>";
                                     }
                             ?>
-                            <br /><hr /> 
+                            <br />
                             <div class="paginationbx">
                                 <?php
                                     if($page>=2){   

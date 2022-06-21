@@ -14,7 +14,10 @@ function deletecv($rec){
     }
 }
 
-$record = $_GET['recid'];
-
-deletecv($record);
+if(isset($_GET['recid'])){
+    $record = $_GET['recid'];
+    deletecv($record);
+}else{
+    header("location:../cvmanagement.php?error=cannot delete CV");
+};
 ?>
