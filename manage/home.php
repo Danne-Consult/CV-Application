@@ -1,3 +1,6 @@
+<?php
+   include "controller/adminsessioncheck.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

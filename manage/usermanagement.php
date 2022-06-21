@@ -1,3 +1,6 @@
+<?php
+   include "controller/adminsessioncheck.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,37 +28,19 @@
             <article>
                 <div class="row">
                     <div class="col-lg-4">
-                        <a href="addcv.php">
+                        <a href="viewusers.php">
                             <div class="useractions">
-                                <h4>Create CV</h4>
-                                <p>Add your background information</p>
+                                <h4>View users</h4>
+                                <p>View User information</p>
                             </div>
                         </a>
                     </div>
 
                     <div class="col-lg-4">
-                        <a href="viewjobs.php">
+                        <a href="viewapplieduser.php">
                             <div class="useractions">
-                                <h4>View Jobs</h4>
-                                <p>Sort through our available jobs</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <a href="appliedjobs.php">
-                            <div class="useractions">
-                                <h4>View applied jobs</h4>
-                                <p>See jobs you applied for</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <a href="usermanagement.php">
-                            <div class="useractions">
-                                <h4>User Management</h4>
-                                <p>Edit your password and email</p>
+                                <h4>View Applied Jobs</h4>
+                                <p>See users who applied to jobs</p>
                             </div>
                         </a>
                     </div>

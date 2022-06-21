@@ -330,7 +330,7 @@
                                 <option value="Property and Construction">Property and Construction</option>
                                 <option value="Public Services and Administration">Public Services and Administration</option>
                                 <option value="Psychology & Social Care">Psychology & Social Care</option>
-                                <option value="Recruitment and HR">Recruitment and HR</option>
+                                <option value="Recruitment and Human Resaurce">Recruitment and HR</option>
                                 <option value="Retail">Retail</option>
                                 <option value="Sales">Sales</option>
                                 <option value="Science and Pharmaceuticals">Science and Pharmaceuticals</option>

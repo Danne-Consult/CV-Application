@@ -28,10 +28,58 @@
             <article>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Job Description</h3>
+                        <h3>Job Listings</h3><br />
                             <?php
-                             include "controller/viewjobs.php";
+                                    include("manage/_db-conf/dbconf.php");
+                                         
+                                    $db = new DBconnect;
+                                    $prefix = $db->prefix;
+                                    $resultsperpage = 10;   
+                                    $sql = "SELECT * FROM ".$prefix."jobs ";  
+                                    $result = $db->conn->query($sql);  
+                                    $numrows = mysqli_num_rows($result);
+                     
+                                    $pagemumber = ceil ($numrows / $resultsperpage);  
+                                
+                                    if (!isset ($_GET['page']) ) {  
+                                        $page = 1;  
+                                    } else {  
+                                        $page = $_GET['page'];  
+                                    }  
+                                    
+                                    $firstresult = ($page-1) * $resultsperpage;     
+                                    $sql1 = "SELECT * FROM ".$prefix."jobs LIMIT " . $firstresult . ',' . $resultsperpage;  
+                                    $result = $db->conn->query($sql1); 
+                                    if($numrows>0){
+                                        while ($row = mysqli_fetch_array($result)) {  
+                                            $jobtab =  "<h4>".$row['job_title']."</h4><p class='smalltext'>Added on ".$row['createdon']." &nbsp; Tags: ".$row['job_tags']."</p>";  
+                                            $jobtab .="<p><a class='readmore' href='job.php?recid=".$row['id']."'>See Job <i class='fa-solid fa-arrow-right-long'></i></a></p><br /><hr />";
+                                            echo $jobtab; 
+                                        } 
+                                    }else{
+                                        echo "<p>No jobs listed</p>";
+                                    }
                             ?>
+                            <br /><hr /> 
+                            <div class="paginationbx">
+                                <?php
+                                    if($page>=2){   
+                                        echo "<a class='nextprevbtn' href='?page=".($page-1)."'>Prev </a>";   
+                                    }                      
+                                    for ($i=1; $i<=$pagemumber; $i++) {   
+                                        if ($i == $page) {   
+                                            $pagLink .= "<a class='pagelink active' href='?page=".$i."'>".$i."</a>";   
+                                        }               
+                                        else  {   
+                                            $pagLink .= "<a class='pagelink' href='?page=".$i."'>".$i."</a>";     
+                                        }   
+                                    }     
+                                    echo $pagLink;   
+                                    if($page<$pagemumber){   
+                                        echo "<a class='nextprevbtn' href='?page=".($page+1)."'>Next</a>";   
+                                    }  
+                                ?>
+                            </div>
                         </div>
                     </div> 
                 </div>

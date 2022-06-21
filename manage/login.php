@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	if(isset($_SESSION['user'])){
-		header('location:index.php');
+	if(isset($_SESSION['adminname']) ){
+		header('location:home.php');
 	}
 ?>
 
@@ -38,14 +38,13 @@
                             unset($_SESSION['message']);
                         }
                     ?>
-                <form action="#" class="contactForm">
+                <form action="controller/login.php" method="POST" class="contactForm">
                     <label>Username</label><br />
                     <input type="text" name="username" id="username"><br />
                     <label>Password</label><br />
                     <input type="password" name="password" id="password"><br />
-                    <button type="submit" class="submit">Login</button>
-                    <br /><br />
-                    <p><a href="#"><i>Forgot password?</i></a></p>
+                    <button type="submit" name="login" class="submit">Login</button>
+                    
                 </form>
             </div>
             <div class="logcopy">&copy;2022 Open Talent Africa</div>
