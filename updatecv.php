@@ -35,6 +35,7 @@
                     <div class="col-lg-12">
                         <h3>Update CV</h3>
                         <?php 
+                        if(isset($_GET['recid'])){
                            if(isset($_POST['submit'])){
                               
                             
@@ -136,7 +137,12 @@
                                 }
                            }
                             include "includes/updatecv.inc";
+
+                        }else{
+                            echo "No CV selected!";
+                        }
                         ?>
+
                     </div> 
                 </div>
             </article>

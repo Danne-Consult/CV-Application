@@ -50,7 +50,7 @@
                                     $firstresult = ($page-1) * $resultsperpage;     
                                     $sql1 = "SELECT * FROM ".$prefix."jobs LIMIT " . $firstresult . ',' . $resultsperpage;  
                                     $result = $db->conn->query($sql1); 
-                                    if($numrows>0){
+                                    if($numrows!=0){
                                         while ($row = mysqli_fetch_array($result)) {  
                                             $jobtab =  "<h4>".$row['job_title']."</h4><p class='smalltext'>Added on ".$row['createdon']." &nbsp; Tags: ".$row['job_tags']."</p>";  
                                             $jobtab .="<p><a class='readmore' href='job.php?recid=".$row['id']."'>See Job <i class='fa-solid fa-arrow-right-long'></i></a></p><br /><hr />";

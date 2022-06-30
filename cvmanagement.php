@@ -29,16 +29,24 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>My CVs</h3>
+                            <?php
+                                include("manage/_db-conf/dbconf.php");
+                                $db = new DBconnect();
+                                $prefix = $db->prefix;
+                                $userid= $_SESSION['user'];
+                                $sql1 = "SELECT * FROM ".$prefix."cvuserrec WHERE userid = '$userid'";
+                                $result1 = $db->conn->query($sql1);
+                                $numrows = mysqli_num_rows($result1);
+
+                                if($numrows != 0){
+                            ?>
+
                         <table>
                             <tr>
                                 <th>CV Title</th>
                                 <th>Action</th>
                             </tr>
                             <?php 
-                                include("manage/_db-conf/dbconf.php");
-                                $db = new DBconnect();
-                                $prefix = $db->prefix;
-                                $userid= $_SESSION['user'];
                                 $sql = "SELECT * FROM ".$prefix."cvuserrec WHERE userid = '$userid'";
                                 $result = $db->conn->query($sql);
                                 while ($rws = $result->fetch_array()) {
@@ -49,6 +57,9 @@
                                 }
                             ?>
                         </table>
+                        <?php }else{
+                            echo "No CVs Added!";
+                        }?>
                     </div> 
                 </div>
             </article>

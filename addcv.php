@@ -49,11 +49,13 @@
                                $postalcode = $db->escape_string($_POST["postalcode"]);
                                $languages = $db->escape_string($_POST["languages"]);
                                $aboutme = $db->escape_string($_POST["aboutme"]);
+                               $educationlevel = $_POST["educationlevel"];
                                $institution = $_POST["institution"];
-                               $schoolcomment = $_POST["schoolcomment"];
                                $comyearfrom = $_POST["comyearfrom"];
                                $comyearto = $_POST["comyearto"];
-                               $work = $_POST["work"];
+                               $schoolcomment = $_POST["schoolcomment"];
+                               $company = $_POST["company"];
+                               $occupation = $_POST["occupation"];
                                $workyearfrom = $_POST["workyearfrom"];
                                $workyearto = $_POST["workyearto"];
                                $workcomment = $_POST["workcomment"];
@@ -64,11 +66,15 @@
                                $twitter = $db->escape_string($_POST["twitter"]);
                                $linkedin = $db->escape_string($_POST["linkedin"]);
                                $interests = $db->escape_string($_POST["interests"]);
-                               $references = $db->escape_string($_POST["references"]);
+                               $refname = $_POST["refname"];
+                               $reftitle = $_POST["reftitle"];
+                               $refemail = $_POST["refemail"];
+                               $reftel = $_POST["reftel"];
                                
                                $numinstitute = count($institution);
-                               $numwork = count($work);
+                               $numwork = count($companys);
                                $numskills = count($skill);
+                               $refnum = count($refname);
                            
                                $instcontext = "";
                                $workcontext = "";
@@ -78,22 +84,24 @@
                            
                                for($i=0;$i<$numinstitute;$i++){
                                    if($institution[$i]!=""){
-                                      $inst = $institution[$i];
-                                      $comyearfr = $comyearfrom[$i];
-                                      $comto = $comyearto[$i];
-                                      $schoolcom = $schoolcomment[$i];
+                                    $edulevel = $educationlevel[$i];  
+                                    $inst = $institution[$i];
+                                    $comyearfr = $comyearfrom[$i];
+                                    $comto = $comyearto[$i];
+                                    $schoolcom = $schoolcomment[$i];
                                    }
-                                  $instcontext .=  "||/~". $inst ."/~" . $comyearfr ."-". $comto ."/~". $schoolcom; 
+                                  $instcontext .=  "||/~". $edulevel ."/~" . $inst ."/~". $comyearfr ."-". $comto ."/~". $schoolcom; 
                               }
                            
                               for($x=0;$x<$numwork;$x++){
-                                   if($work[$x]!=""){
-                                   $works = $work[$x];
+                                   if($companys[$x]!=""){
+                                   $companys = $company[$x];
+                                   $occupations = $occupation[$x];
                                    $workyfr = $workyearfrom[$x];
                                    $workyto = $workyearto[$x];
                                    $workcom = $workcomment[$x];
                                    }
-                                   $workcontext .=  "||/~". $works ."/~" . $workyfr ."-". $workyto ."/~". $workcom; 
+                                   $workcontext .=  "||/~". $companys ."/~" . $occupations ."/~" . $workyfr ."-". $workyto ."/~". $workcom; 
                                }
 
                                for($y=0;$y<$numskills;$y++){
@@ -102,9 +110,20 @@
                                 $range = $capacity[$y];
                                 }
                                 $skillcontext .=  "||/~". $skills ."/~" . $range; 
-                            }
+                                }
 
-                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, achievements, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$achievements','$skillcontext','$references','$facebook','$twitter','$linkedin','$currdate')";
+                                for($z=0;$z<$refnum;$z++){
+                                    if($refname[$z]!=""){
+                                    $refnames = $refname[$z];
+                                    $reftitles = $reftitle[$z];
+                                    $refemails = $refemail[$z];
+                                    $reftels = $reftel[$z];
+                                    }
+                                    $refs .=  "||/~". $refnames ."/~" . $reftitles ."/~" . $refemails ."/~" . $reftels; 
+                                }
+
+
+                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, achievements, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$achievements','$skillcontext','$refs','$facebook','$twitter','$linkedin','$currdate')";
                        
                                $register = $db->conn->query($sql);
                            
