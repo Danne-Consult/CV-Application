@@ -141,7 +141,7 @@
             });
 
 			$(document).on('click', '.moreschool' ,function(){
-				$('.com-edu').append('<div class="educont" ><hr /><div class="row"> <div class="col-lg-6"><label for="work">School/institution</label><br />  <input type="text" name="institution[]" />  </div>     <div class="col-lg-4"><div class="row"><div class="col-lg-6"><label for="comyearfrom">From</label><br /><input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" /></div><div class="col-lg-6"><label for="comyearto">To</label><br /><input type="number" name="comyearto[]" min="1900" max="2099" step="1" /> </div></div></div> </div><div class="row"><div class="col-lg-6"> <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" ></textarea> </div><div class="col-lg-6"> <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div> </div></div></div>');
+				$('.com-edu').append('<div class="educont"> <hr /> <div class="row"> <div class="col-lg-6"> <label for="work">Education Level</label><br /> <select name="educationlevel[]" required> <option>...</option> <option value="Secondary">Secondary</option> <option value="Certificate">Certificate</option> <option value="Diploma">Diploma</option> <option value="Undergraduate">Undergraduate</option> <option value="Post graduate Diploma">Post graduate Diploma</option> <option value="Masters">Masters</option> </select> <br /> <label for="Institution">School/Institution</label><br /> <input type="text" name="institution[]" required /> </div> <div class="col-lg-4"> <div class="row"> <div class="col-lg-6"> <label for="comyearfrom">From</label><br /> <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" required /> </div> <div class="col-lg-6"> <label for="comyearto">To</label><br /> <input type="number" name="comyearto[]" min="1900" max="2099" step="1" required /> </div> </div> </div> </div> <div class="row"> <div class="col-lg-6"> <label for="schoolcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="schoolcomment[]" ></textarea> </div> <div class="col-lg-6"> <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div> <div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div> </div> </div> </div>');
 			});
 			$(document).on('click','.deleteedu', function(){
                 if(confirm("Are you sure you want to delete this?") == true){
@@ -150,7 +150,7 @@
 			});
 
             $(document).on('click', '.morework' ,function(){
-				$('.com-work').append('<div class="workcont" ><hr /><div class="row"><div class="col-lg-6"><label for="work">Job/Occupation</label><br /><input type="text" name="work[]" /></div><div class="col-lg-4"><div class="row"> <div class="col-lg-6"><label for="workyearcorfrom">From</label><br /> <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" /> </div> <div class="col-lg-6"> <label for="workyearto">To</label><br /> <input type="number" name="workyearto[]" min="1900" max="2099" step="1" /> </div> </div></div></div> <div class="row"><div class="col-lg-6"> <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea></div> <div class="col-lg-6"> <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div>  </div></div>');
+				$('.com-work').append('<div class="workcont"><hr /> <div class="row"> <div class="col-lg-6"> <label for="work">Company/Organization</label><br /> <input type="text" name="company[]" /> <br /> <label for="occupation">Position</label><br /> <input type="text" name="occupation[]" /> </div> <div class="col-lg-4"> <div class="row"> <div class="col-lg-6"> <label for="workyearcorfrom">From</label><br /> <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" /> </div> <div class="col-lg-6"> <label for="workyearto">To</label><br /> <input type="number" name="workyearto[]" min="1900" max="2099" step="1" /> </div> </div> </div> </div> <div class="row"> <div class="col-lg-6"> <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" ></textarea> </div> <div class="col-lg-6"> <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div> <div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div></div></div></div>');
 			});
 			$(document).on('click','.deletework', function(){
                 if(confirm("Are you sure you want to delete this record?") == true){
@@ -167,6 +167,15 @@
                     $(this).closest(".skillcont").remove(); 
                 };
 				
+			});
+
+            $(document).on('click', '.moreref' ,function(){
+				$('.refbar').append('<div class="refmore"><hr /> <div class="row"> <div class="col-lg-5"> <label for="refname">Referee Name</label><br /> <input type="text" name="refname[]" /> </div> <div class="col-lg-3"> <label for="reftitle">Occupation Title</label><br /> <input type="text" name="reftitle[]" /> </div> </div> <div class="row"> <div class="col-lg-4"> <label for="refemail">Email</label><br /> <input type="text" name="refemail[]" /> </div> <div class="col-lg-4"> <label for="refnareftelme">Telephone</label><br /> <input type="text" name="reftel[]" /> </div> <div class="col-lg-4"> <div class="addbtnbx moreref"><i class="fa-solid fa-circle-plus"></i></div> <div class="delbtnbx deleteref"><i class="fa-solid fa-circle-minus"></i></div> </div> </div>');
+			});
+			$(document).on('click','.deleteref', function(){
+                if(confirm("Are you sure you want to delete this record?") == true){
+				    $(this).closest(".refmore").remove();
+                };
 			});
         });
     </script> 

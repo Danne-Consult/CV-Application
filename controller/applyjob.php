@@ -24,6 +24,6 @@
         }
 
     }else{
-        echo "error";
+        header("Location:".$_SERVER['HTTP_REFERER']."?error=Error applying for job"); 
     }
 ?>

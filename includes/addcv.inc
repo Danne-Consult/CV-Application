@@ -75,7 +75,18 @@
     <div class="com-edu">
         <div class="row">
             <div class="col-lg-6">
-            <label for="work">School/institution</label><br />
+            <label for="work">Education Level</label><br />
+            <select name="educationlevel[]" required>
+                <option>...</option>
+                <option value="Secondary">Secondary</option>
+                <option value="Certificate">Certificate</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Post graduate Diploma">Post graduate Diploma</option>
+                <option value="Masters">Masters</option>
+            </select>
+            <br />
+            <label for="Institution">School/Institution</label><br />
             <input type="text" name="institution[]" required />
             </div>
         
@@ -107,8 +118,11 @@
     <div class="com-work">
         <div class="row">
             <div class="col-lg-6">
-            <label for="work">Job/Occupation</label><br />
-            <input type="text" name="work[]" />
+            <label for="work">Company/Organization</label><br />
+            <input type="text" name="company[]" />
+            <br />
+            <label for="occupation">Position</label><br />
+            <input type="text" name="occupation[]" />
             </div>
 
             <div class="col-lg-4">
@@ -186,10 +200,31 @@
 
     <hr />
     <h4>References</h4>
-    <div class="row">
-        <div class="col-lg-12">
-            <textarea name="references" id="editor" cols="30" rows="3" maxlength="500"></textarea><br />*optional. Max 500 characters
+    <div class="refbar">
+        <div class="row">
+            <div class="col-lg-5">
+                <label for="refname">Referee Name</label><br />
+                <input type="text" name="refname[]" />
+            </div>
+            <div class="col-lg-3">
+                <label for="reftitle">Occupation Title</label><br />
+                <input type="text" name="reftitle[]" />
+            </div>
         </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="refemail">Email</label><br />
+                <input type="text" name="refemail[]" />
+            </div>
+            <div class="col-lg-4">
+                <label for="refnareftelme">Telephone</label><br />
+                <input type="text" name="reftel[]" />
+            </div>
+            <div class="col-lg-4">
+                <div class="addbtnbx moreref"><i class="fa-solid fa-circle-plus"></i></div>
+            </div>
+        </div>
+        
     </div>
 
     <br />

@@ -33,14 +33,25 @@
                             include("manage/_db-conf/dbconf.php");
                             $db = new DBconnect();
                             $prefix = $db->prefix;
+                            $userid = $_SESSION['user'];
 
                             $jobid = $_GET['recid'];
                             $sql = "SELECT * FROM ".$prefix."jobs WHERE id = '$jobid'";
 
                             $result = $db->conn->query($sql);
                             $rws = $result->fetch_array();
+
+                            $sql3="SELECT * FROM ".$prefix."userjobs WHERE jobid='$jobid' AND userid='$userid'";
+                            $result3= $db->conn->query($sql3);
+                            $numrows = mysqli_num_rows($result3);
+
                         ?>
+                        <?php
+                        if($numrows==0){?> 
                         <p class='alignright'><a href="applyjob.php?jobid=<?php echo $rws['id']; ?>" class="btn-yellow_rounded">Apply Job</a></p>
+                        <?php }else{echo "<p class='alignright'><i>Applied</i></p>";}
+                        ?>
+                        
                         <h2><?php echo $rws['job_title']; ?></h2>
                         <p class="smalltext">Posted on: <?php echo date('D d-M-Y', strtotime($rws['createdon']))  ?> &nbsp;&nbsp;Tags: <?php echo $rws['job_tags']; ?></p>
                         <p>
@@ -53,7 +64,11 @@
                         <?php echo $rws['job_desc']; 
                         ?>
                         <br /><br />
+                        <?php
+                        if($numrows==0){?> 
                         <p class='alignright'><a href="applyjob.php?jobid=<?php echo $rws['id']; ?>" class="btn-yellow_rounded">Apply Job</a></p>
+                        <?php }
+                        ?>
 
                         <?php
                         }else{

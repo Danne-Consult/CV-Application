@@ -35,8 +35,13 @@
                                 $db = new DBconnect();
                                 $prefix = $db->prefix;
                                 $userid = $_SESSION['user'];
-
                                 $jobid = $_GET['jobid'];
+
+                                $sql3="SELECT * FROM ".$prefix."userjobs WHERE jobid='$jobid' AND userid='$userid'";
+                                $result3= $db->conn->query($sql3);
+                                $numrows = mysqli_num_rows($result3);
+                                
+                                if($numrows==0){                                
                                 $sql = "SELECT * FROM ".$prefix."jobs WHERE id = '$jobid'";
                                 $result = $db->conn->query($sql);
                                 $rws = $result->fetch_array();
@@ -77,6 +82,9 @@
                         </form>
 
                         <?php 
+                                }else{
+                                    echo "You have already applied for this job! <br /><br ><a href='viewjobs.php' class='btn-yellow_rounded'>Go back</a>";
+                                }
                             }else{
                                 header("location:viewjobs.php?error=Select a job apply for");
                             }
