@@ -72,9 +72,10 @@
                                $reftel = $_POST["reftel"];
                                
                                $numinstitute = count($institution);
-                               $numwork = count($companys);
+                               $numwork = count($company);
                                $numskills = count($skill);
                                $refnum = count($refname);
+                               
                            
                                $instcontext = "";
                                $workcontext = "";
@@ -94,7 +95,7 @@
                               }
                            
                               for($x=0;$x<$numwork;$x++){
-                                   if($companys[$x]!=""){
+                                   if($company[$x]!=""){
                                    $companys = $company[$x];
                                    $occupations = $occupation[$x];
                                    $workyfr = $workyearfrom[$x];
@@ -124,13 +125,14 @@
 
 
                                $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, achievements, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$achievements','$skillcontext','$refs','$facebook','$twitter','$linkedin','$currdate')";
-                       
+
+                        
                                $register = $db->conn->query($sql);
                            
-                               if($register){  
-                                   echo "Registration Successful!";  
+                                if($register){  
+                                    echo "Registration Successful!";  
                                 }else{  
-                                   echo "Error: Cannot save information";  
+                                    echo "Error: Cannot save information";  
                                 }
                            }
                             include "includes/addcv.inc";

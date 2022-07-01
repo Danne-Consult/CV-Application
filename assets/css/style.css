@@ -443,3 +443,41 @@ footer .copy { margin-top: 0px; text-align:center;}
 
 }
 
+@media print {
+    *, *::before, *::after {
+    text-shadow: inherit;
+    box-shadow: inherit;
+    }
+    header, .sidebar, footer{display:none;}
+    .bodybox{background-color:#fff;}
+    .cvtitle{display:none; font-size:70%;}
+    .cvpage{display:block !important; width:150%; margin-bottom:2em; margin-top:-3em; margin-left:-3em;}
+    .cvpage .shortcont{font-size:10px;}
+    .cvpage .fullcont{font-size:12px; padding-bottom:2em;}
+    .cvpage h1 {margin-bottom:0;}
+    .cvpage .socials {display:none;}
+
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x));
+    }
+
+    .col-lg-3 {
+        flex: 0 0 auto;
+        width: 30%;
+    }
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+    .col-lg-9 {
+        flex: 0 0 auto;
+        width: 70%;
+    }
+
+}

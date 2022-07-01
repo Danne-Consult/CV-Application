@@ -37,7 +37,10 @@
             <article>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>My CV: <?php echo $rws['title'];?></h3>
+                        <div class="cvtitle">
+                            <h3>My CV: <?php echo $rws['title'];?></h3>
+                            <div class="alignright"><a href="#" class="btn-yellow_rounded" id="printcv" title="Print CV">Print CV <i class="fas fa-print"></i></a></div>
+                        </div>
                         <div class="cvpage">
                             <div class="row">
                                 <div class="col-lg-3 shortcont thintext">
@@ -104,7 +107,7 @@
                                             {
                                                 $edulist = explode("/~",$value);	
                                 
-                                                $edu= '<div class="edubx"><h5>'.$edulist[1].': <span>'. $edulist[2] .'</span></h5><p>'.$edulist[3] .'</p></div>';
+                                                $edu= '<div class="edubx"><h5>'.$edulist[1].'<br /><span>'. $edulist[2] .' : '.$edulist[3] .'</span></h5><p>'.$edulist[4] .'</p></div>';
                                                 echo $edu;
                                             }
                                     ?>
@@ -121,7 +124,7 @@
                                             {
                                                 $wklist = explode("/~",$value);	
                                 
-                                                $works= '<div class="edubx"><h5>'.$wklist[1].': <span>'. $wklist[2] .'</span></h5><p>'.$wklist[3] .'</p></div>';
+                                                $works= '<div class="edubx"><h5>'.$wklist[1].'<br /><span>'. $wklist[2] .' : '. $wklist[3] .' </span></h5><p>'.$wklist[4] .'</p></div>';
                                                 echo $works;
                                             }
                                     ?>
@@ -130,7 +133,22 @@
                                     <p><?php echo $rws['achievements'];?></p>
                                     <hr /><br />            
                                     <h4>References</h4>
-                                    <p><?php echo $rws['referencesx'];?></p>
+                                    <div class="row">
+                                    <?php 
+                                        $refs= explode("||", $rws['referencesx']);
+                                        $refs= array_filter($refs);
+                                        
+                                        $refcount = count($refs);
+                                        $reference = "";
+                                        foreach($refs as $key => $value)
+                                            {
+                                                $reflist = explode("/~",$value);	
+                                
+                                                $reference= '<div class="col-lg-4">'.$reflist[1].'<br />'. $reflist[2] .'<br />'. $reflist[3] .'<br />'.$reflist[4] .'</div>';
+                                                echo $reference;
+                                            }
+                                    ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -144,5 +162,14 @@
             <div class="copy">&copy;2022. Open Talent Africa</div>
         </article>
     </footer>
+    <script>
+        $(document).ready(function(){
+            $('#printcv').click(function(){
+                event.preventDefault();
+                window.print();
+            });
+        });
+  </script>
+    </script>
 </body>
 </html>
