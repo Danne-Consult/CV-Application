@@ -56,7 +56,7 @@
                                 while($rws = $result->fetch_array()){
                             ?>
                             <div class="appliedjb">
-                                <h4><span>Job Title: </span><br /><?php echo $rws['job_title']; ?></h4>
+                                <a href="job.php?recid=<?php echo $rws[1]; ?>"><h4><span>Job Title: </span><br /><?php echo $rws['job_title']; ?></h4></a>
                                 <p class="smalltext">Created on: <?php echo date('D d-M-Y', strtotime($rws['createdon']))?><br />
                                 Job tags: <?php echo $rws['job_tags']; ?></p>
 

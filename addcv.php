@@ -191,7 +191,7 @@
 			});
 
             $(document).on('click', '.moreref' ,function(){
-				$('.refbar').append('<div class="refmore"><hr /> <div class="row"> <div class="col-lg-5"> <label for="refname">Referee Name</label><br /> <input type="text" name="refname[]" /> </div> <div class="col-lg-3"> <label for="reftitle">Occupation Title</label><br /> <input type="text" name="reftitle[]" /> </div> </div> <div class="row"> <div class="col-lg-4"> <label for="refemail">Email</label><br /> <input type="text" name="refemail[]" /> </div> <div class="col-lg-4"> <label for="refnareftelme">Telephone</label><br /> <input type="text" name="reftel[]" /> </div> <div class="col-lg-4"> <div class="addbtnbx moreref"><i class="fa-solid fa-circle-plus"></i></div> <div class="delbtnbx deleteref"><i class="fa-solid fa-circle-minus"></i></div> </div> </div>');
+				$('.refbar').append('<div class="refmore"><hr /> <div class="row"> <div class="col-lg-5"> <label for="refname">Referee Name</label><br /> <input type="text" name="refname[]" /> </div> <div class="col-lg-3"> <label for="reftitle">Occupation Title</label><br /> <input type="text" name="reftitle[]" /> </div> </div> <div class="row"> <div class="col-lg-4"> <label for="refemail">Email</label><br /> <input type="email" name="refemail[]" /> </div> <div class="col-lg-4"> <label for="refnareftelme">Telephone</label><br /> <input type="tel" name="reftel[]" /> </div> <div class="col-lg-4"> <div class="addbtnbx moreref"><i class="fa-solid fa-circle-plus"></i></div> <div class="delbtnbx deleteref"><i class="fa-solid fa-circle-minus"></i></div> </div> </div>');
 			});
 			$(document).on('click','.deleteref', function(){
                 if(confirm("Are you sure you want to delete this record?") == true){

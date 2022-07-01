@@ -70,7 +70,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-lg-12">
-                                <label for="coverletter">Share your reason to apply for this job</label><br />
+                                <label for="coverletter">Write your cover letter for the application</label><br />
                                     <textarea name="coverletter" id="editor" cols="30" rows="10"></textarea><br /><br />
                                 </div>
                             </div>

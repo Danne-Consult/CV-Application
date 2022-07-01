@@ -214,11 +214,11 @@
         <div class="row">
             <div class="col-lg-4">
                 <label for="refemail">Email</label><br />
-                <input type="text" name="refemail[]" />
+                <input type="email" name="refemail[]" />
             </div>
             <div class="col-lg-4">
                 <label for="refnareftelme">Telephone</label><br />
-                <input type="text" name="reftel[]" />
+                <input type="tel" name="reftel[]" />
             </div>
             <div class="col-lg-4">
                 <div class="addbtnbx moreref"><i class="fa-solid fa-circle-plus"></i></div>

@@ -83,9 +83,9 @@
                 {
                     $edulist = explode("/~",$value);
                     
-                    $year=explode("-",$edulist[2]);
+                    $year=explode("-",$edulist[3]);
 
-                    $edu= '<div class="educont" ><div class="row"> <div class="col-lg-6"><label for="work">School/institution</label><br />  <input type="text" name="institution[]" value="'.$edulist[1].'" />  </div>     <div class="col-lg-4"><div class="row"><div class="col-lg-6"><label for="comyearfrom">From</label><br /><input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" value="'.$year[0].'" /></div><div class="col-lg-6"><label for="comyearto">To</label><br /><input type="number" name="comyearto[]" min="1900" max="2099" step="1" value="'.$year[1].'" /> </div></div></div> </div><div class="row"><div class="col-lg-6"> <label for="schoolcomment">Achievements/Comments</label><br /><textarea rowspan="3"  name="schoolcomment[]" >'.$edulist[3].'</textarea> </div><div class="col-lg-6"> <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div> </div></div></div><br />';
+                    $edu= '<div class="educont"> <hr /> <div class="row"> <div class="col-lg-6"> <label for="work">Education Level</label><br /> <select name="educationlevel[]" required> <option value="'.$edulist[1].'" selected>'.$edulist[1].'</option><option>...</option> <option value="Secondary">Secondary</option> <option value="Certificate">Certificate</option> <option value="Diploma">Diploma</option> <option value="Undergraduate">Undergraduate</option> <option value="Post graduate Diploma">Post graduate Diploma</option> <option value="Masters">Masters</option> </select> <br /> <label for="Institution">School/Institution</label><br /> <input type="text" name="institution[]" required value="'.$edulist[2].'" /> </div> <div class="col-lg-4"> <div class="row"> <div class="col-lg-6"> <label for="comyearfrom">From</label><br /> <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" value="'.$year[0].'" required /> </div> <div class="col-lg-6"> <label for="comyearto">To</label><br /> <input type="number" name="comyearto[]" min="1900" max="2099" step="1" value="'.$year[1].'" required /> </div> </div> </div> </div> <div class="row"> <div class="col-lg-6"> <label for="schoolcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="schoolcomment[]" >'.$edulist[4].'</textarea> </div> <div class="col-lg-6">  <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div><div class="delbtnbx deleteedu"><i class="fa-solid fa-circle-minus"></i></div> </div></div></div><br />';
                     echo $edu;
                 }
         ?>
@@ -103,9 +103,9 @@
             foreach($wklist as $key => $value)
                 {
                     $wklist = explode("/~",$value);	
-                    $yearx = explode("-",$wklist[2]);
+                    $yearx = explode("-",$wklist[3]);
     
-                    $works= '<div class="workcont" ><div class="row"><div class="col-lg-6"><label for="work">Job/Occupation</label><br /><input type="text" name="work[]" value="'.$wklist[1].'" /></div><div class="col-lg-4"><div class="row"> <div class="col-lg-6"><label for="workyearcorfrom">From</label><br /> <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" value="'.$yearx[0].'" /> </div> <div class="col-lg-6"> <label for="workyearto">To</label><br /> <input type="number" name="workyearto[]" min="1900" max="2099" step="1" value="'.$yearx[1].'" /> </div> </div></div></div> <div class="row"><div class="col-lg-6"> <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" >'.$wklist[3].'</textarea></div> <div class="col-lg-6"> <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div><div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div> </div></div></div><br />';
+                    $works= '<div class="workcont"><hr /> <div class="row"> <div class="col-lg-6"> <label for="work">Company/Organization</label><br /> <input type="text" name="company[]" value="'.$wklist[1].'" /> <br /> <label for="occupation">Position</label><br /> <input type="text" name="occupation[]" value="'.$wklist[2].'" /> </div> <div class="col-lg-4"> <div class="row"> <div class="col-lg-6"> <label for="workyearcorfrom">From</label><br /> <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" value="'.$yearx[0].'" /> </div> <div class="col-lg-6"> <label for="workyearto">To</label><br /> <input type="number" name="workyearto[]" min="1900" max="2099" step="1" value="'.$yearx[1].'" /> </div> </div> </div> </div> <div class="row"> <div class="col-lg-6"> <label for="workcomment">Achievements/Comments</label><br /> <textarea rowspan="3"  name="workcomment[]" >'.$wklist[4].'</textarea> </div> <div class="col-lg-6"> <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div> <div class="delbtnbx deletework"><i class="fa-solid fa-circle-minus"></i></div></div></div></div><br />';
                     echo $works;
                 }
         ?>
@@ -135,9 +135,6 @@
                         echo $list;
                     }
             ?>
-
-
-        
     </div>
     <hr />
     <h4>Social Media</h4>
@@ -169,10 +166,25 @@
     <h4>References</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="references" id="editor" cols="30" rows="3" maxlength="500"><?php echo $rws['referencesx']; ?></textarea><br />*optional. Max 500 characters
+            <div class="refbar">
+            <?php 
+                $refs= explode("||", $rws['referencesx']);
+                $refs= array_filter($refs);
+                
+                $reflist = "";
+                foreach($refs as $key => $value)
+                    {
+                        $refsent = explode("/~",$value);	
+        
+                        $reflist= '<div class="refmore"><hr /> <div class="row"> <div class="col-lg-5"> <label for="refname">Referee Name</label><br /> <input type="text" name="refname[]" value="'.$refsent[1].'" /> </div> <div class="col-lg-3"> <label for="reftitle">Occupation Title</label><br /> <input type="text" name="reftitle[]"  value="'.$refsent[2].'" /> </div> </div> <div class="row"> <div class="col-lg-4"> <label for="refemail">Email</label><br /> <input type="email" name="refemail[]"  value="'.$refsent[3].'" /> </div> <div class="col-lg-4"> <label for="refnareftelme">Telephone</label><br /> <input type="tel" name="reftel[]"  value="'.$refsent[4].'" /> </div> <div class="col-lg-4"> <div class="addbtnbx moreref"><i class="fa-solid fa-circle-plus"></i></div> <div class="delbtnbx deleteref"><i class="fa-solid fa-circle-minus"></i></div> </div> </div>';
+
+                        echo $reflist;
+                    }
+            ?>
+            </div>
         </div>
     </div>
 
     <br />
-    <input type="submit" class="submit" name="submit" value="Save CV" />
+    <input type="submit" class="submit" name="submit" value="Update CV" />
 </form>

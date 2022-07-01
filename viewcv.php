@@ -39,7 +39,7 @@
                     <div class="col-lg-12">
                         <div class="cvtitle">
                             <h3>My CV: <?php echo $rws['title'];?></h3>
-                            <div class="alignright"><a href="#" class="btn-yellow_rounded" id="printcv" title="Print CV">Print CV <i class="fas fa-print"></i></a></div>
+                            <div class="alignright"><a href="updatecv.php?recid=<?php echo $recid; ?>" class="" title="Edit CV">Edit CV <i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn-yellow_rounded" id="printcv" title="Print CV">Print CV <i class="fas fa-print"></i></a></div>
                         </div>
                         <div class="cvpage">
                             <div class="row">
