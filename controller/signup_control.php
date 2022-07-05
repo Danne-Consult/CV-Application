@@ -13,7 +13,7 @@ class Signup{
         
         if(!$result){
            
-            header("location:signup.php?error=addfailed");
+            header("location:signup.php?error=Connot Add User");
             exit();
         }
         $result = null;
@@ -24,7 +24,7 @@ class Signup{
         $result = $db->countData("email",$email);
         
         if($result){
-            header("location:signup.php?error=userexists");
+            header("location:signup.php?error=User already Exists");
         }
         return $result;
     }

@@ -130,9 +130,9 @@
                                $register = $db->conn->query($sql);
                            
                                 if($register){  
-                                    echo "Registration Successful!";  
+                                    echo "<div class='success-green'>Registration Successful!</div>";  
                                 }else{  
-                                    echo "Error: Cannot save information";  
+                                    echo "<div class='error-red'>Error: Cannot save information</div>";  
                                 }
                            }
                             include "includes/addcv.inc";

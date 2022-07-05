@@ -149,10 +149,10 @@
                                                     
                               $register = $db->conn->query($sql);
                            
-                               if($register){  
-                                   echo "Record Updated!";  
+                                if($register){  
+                                    echo "<div class='success-green'>Update Successful!</div>";  
                                 }else{  
-                                   echo "Error: Cannot update information";  
+                                    echo "<div class='error-red'>Error: Cannot update information</div>";  
                                 }
                            }
                             include "includes/updatecv.inc";

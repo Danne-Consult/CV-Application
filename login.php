@@ -26,14 +26,8 @@ if(isset($_SESSION['username'])){
                 <div class="logo"><a href="#"><img src="assets/images/logo.svg" alt="Open talent Africa" class="logoimg"></a></div>
                 <h2>Login</h2>
                     <?php
-                        if(isset($_SESSION['message'])){
-                            ?>
-                                <div class="alert alert-info text-center">
-                                    <?php echo $_SESSION['message']; ?>
-                                </div>
-                            <?php
-        
-                            unset($_SESSION['message']);
+                        if(isset($_GET['error'])){
+                            echo "<div class='error-red'>". $_GET['error'] ."</div>";
                         }
                     ?>
                 <form action="controller/login.php" method="POST" class="contactForm">

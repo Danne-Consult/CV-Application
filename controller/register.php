@@ -49,7 +49,7 @@
 
             $result = $db->conn->query($sql);
             if(!$result){
-                header("location:../signup.php?error=cannot register");
+                header("location:../signup.php?error=Email already registered");
             }else{
                 $sql2="SELECT * FROM ".$prefix."cvappusers WHERE email='$email'";
 				$result =  $db->conn->query($sql2);

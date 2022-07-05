@@ -20,6 +20,11 @@
             <div class="logform">
                 <div class="logo"><a href="Home.php"><img src="assets/images/logo.svg" alt="Open talent Africa" class="logoimg"></a></div>
                 <h2>Signup</h2>
+                <?php
+                    if(isset($_GET['error'])){
+                        echo "<div class='error-red'>". $_GET['error'] ."</div>";
+                    }
+                ?>
                 <form action="controller/register.php" method="POST" class="contactForm">
                     <div class="row">
                         <div class="col-lg-6"> 
