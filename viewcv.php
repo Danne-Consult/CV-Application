@@ -123,13 +123,14 @@
                                         foreach($wklist as $key => $value)
                                             {
                                                 $wklist = explode("/~",$value);	
+                                                $monthz = explode("~",$wklist[3]);
                                 
-                                                $works= '<div class="edubx"><h5>'.$wklist[1].'<br /><span>'. $wklist[2] .' : '. $wklist[3] .' </span></h5><p>'.$wklist[4] .'</p></div>';
+                                                $works= '<div class="edubx"><h5>'.$wklist[1].'<br /><span>'. $wklist[2] .' : '. date('M-Y', strtotime($monthz[0])) .' to '. date('M-Y', strtotime($monthz[1])) .' </span></h5><p>'.$wklist[4] .'</p></div>';
                                                 echo $works;
                                             }
                                     ?>
                                     <hr /><br />            
-                                    <h4>Achievements</h4>
+                                    <h4>Other Accreditations/Personal Achievements</h4>
                                     <p><?php echo $rws['achievements'];?></p>
                                     <hr /><br />            
                                     <h4>References</h4>
@@ -144,7 +145,7 @@
                                             {
                                                 $reflist = explode("/~",$value);	
                                 
-                                                $reference= '<div class="col-lg-4">'.$reflist[1].'<br />'. $reflist[2] .'<br />'. $reflist[3] .'<br />'.$reflist[4] .'</div>';
+                                                $reference= '<div class="col-lg-4 refbx">'.$reflist[1].'<br />'. $reflist[2] .'<br />'. $reflist[3] .'<br /><i class="fas fa-at"></i> '.$reflist[4] .'<br /><i class="fas fa-phone"></i> '.$reflist[5] .'</div>';
                                                 echo $reference;
                                             }
                                     ?>

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-6">
             <label for="cvtitle">CV Title</label><br />
-            <input type="text" name="cvtitle" />
+            <input type="text" name="cvtitle" required />
         </div>
     </div>
     <h4>Personal Information</h4>
@@ -49,8 +49,8 @@
         </div>
         
         
-        <div class="col-lg-4">
-            <label for="languages">Languages</label><br />
+        <div class="col-lg-6">
+            <label for="languages">Languages <i class="italic">*Separated with a comma(,)</i></label><br />
             <input type="text" name="languages" />
         </div>
         <!--<div class="col-lg-3">
@@ -67,7 +67,7 @@
     <h4>Brief About Me</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="aboutme" id="editor" cols="30" rows="3" maxlength="500"></textarea><br />*Max 500 characters
+            <textarea name="aboutme" class="editor" cols="30" rows="3" maxlength="500"></textarea><br /><i class="italic">*Max 500 characters</i>
         </div>
     </div>
     <hr />
@@ -75,84 +75,81 @@
     <div class="com-edu">
         <div class="row">
             <div class="col-lg-6">
-            <label for="work">Education Level</label><br />
-            <select name="educationlevel[]" required>
-                <option>...</option>
-                <option value="Secondary">Secondary</option>
-                <option value="Certificate">Certificate</option>
-                <option value="Diploma">Diploma</option>
-                <option value="Undergraduate">Undergraduate</option>
-                <option value="Post graduate Diploma">Post graduate Diploma</option>
-                <option value="Masters">Masters</option>
-            </select>
-            <br />
-            <label for="Institution">School/Institution</label><br />
-            <input type="text" name="institution[]" required />
-            </div>
-        
-            <div class="col-lg-4">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="comyearfrom">From</label><br />
-                        <input type="number" name="comyearfrom[]" min="1900" max="2099" step="1" required />
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="comyearto">To</label><br />
-                        <input type="number" name="comyearto[]" min="1900" max="2099" step="1" required />
-                    </div>
-                </div>
+                <label for="work">Education Level</label><br />
+                <select name="educationlevel[]" required>
+                    <option>...</option>
+                    <option value="Secondary">Secondary</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Post Graduate Diploma">Post Graduate Diploma</option>
+                    <option value="Masters">Masters</option>
+                </select>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <label for="schoolcomment">Achievements/Comments</label><br />
-                <textarea rowspan="3"  name="schoolcomment[]" ></textarea>
+                <label for="Institution">School/Institution</label><br />
+                <input type="text" name="institution[]" required />
+            </div>        
+            
+            <div class="col-lg-2">
+                <label for="comyearfrom">From</label><br />
+                <input type="number" name="comyearfrom[]" min="1960" max="2099" step="1" required />
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-2">
+                <label for="comyearto">To</label><br />
+                <input type="number" name="comyearto[]" min="1960" max="2099" step="1" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <label for="schoolcomment">Achievements/Comments</label><br />
+                <textarea rowspan="3" class="editor" name="schoolcomment[]" ></textarea>
+            </div>
+            <div class="col-lg-2">
                 <div class="addbtnbx moreschool"><i class="fa-solid fa-circle-plus"></i></div>
             </div>
         </div>
     </div> 
     <hr />
-    <h4>Occupation/Work background</h4>
+    <h4>Work Experience</h4>
     <div class="com-work">
         <div class="row">
             <div class="col-lg-6">
             <label for="work">Company/Organization</label><br />
             <input type="text" name="company[]" />
-            <br />
-            <label for="occupation">Position</label><br />
-            <input type="text" name="occupation[]" />
-            </div>
-
-            <div class="col-lg-4">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="workyearcorfrom">From</label><br />
-                        <input type="number" name="workyearfrom[]" min="1900" max="2099" step="1" />
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="workyearto">To</label><br />
-                        <input type="number" name="workyearto[]" min="1900" max="2099" step="1" />
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <label for="workcomment">Achievements/Comments</label><br />
-                <textarea rowspan="3"  name="workcomment[]" ></textarea>
+            <label for="occupation">Position</label><br />
+            <input type="text" name="occupation[]" />
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-2">
+                <label for="workyearcorfrom">From</label><br />
+                <input type="month" name="workyearfrom[]" />
+            </div>
+            <div class="col-lg-2">
+                <label for="workyearto">To</label><br />
+                <input type="month" name="workyearto[]" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <label for="workcomment">Achievements/Comments</label><br />
+                <textarea rowspan="3" class="editor" name="workcomment[]" ></textarea>
+            </div>
+            <div class="col-lg-2">
                 <div class="addbtnbx morework"><i class="fa-solid fa-circle-plus" id="addbtn"></i></div>
             </div>
         </div>
     </div> 
     <hr />
-    <h4>Personal Achievements</h4>
+    <h4>Other Accreditations/Personal Achievements</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="achievements" id="editor" cols="30" rows="3" maxlength="200"></textarea><br />*Max 500 characters
+            <textarea name="achievements" class="editor" cols="30" rows="3" maxlength="200"></textarea><br /><i class="italic">*Max 500 characters</i>
         </div>
     </div>
     <hr />
@@ -194,7 +191,7 @@
     <h4>Interests</h4>
     <div class="row">
         <div class="col-lg-12">
-            <textarea name="interests" id="editor" cols="30" rows="3" maxlength="500"></textarea><br />*Max 500 characters
+            <textarea name="interests" class="editor" cols="30" rows="3" maxlength="500"></textarea><br /><i class="italic">*Max 500 characters</i>
         </div>
     </div>
 
@@ -202,11 +199,17 @@
     <h4>References</h4>
     <div class="refbar">
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-8">
                 <label for="refname">Referee Name</label><br />
                 <input type="text" name="refname[]" />
             </div>
-            <div class="col-lg-3">
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="orgcom">Organization/Company</label><br />
+                <input type="text" name="orgcom[]" />
+            </div>
+            <div class="col-lg-4">
                 <label for="reftitle">Occupation Title</label><br />
                 <input type="text" name="reftitle[]" />
             </div>
