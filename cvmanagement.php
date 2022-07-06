@@ -28,6 +28,7 @@
             <article>
                 <div class="row">
                     <div class="col-lg-12">
+                    <div class="alignright"><a href="addcv.php" class="btn-yellow_rounded" title="Add CV">Add CV <i class="fas fa-plus"></i></a></div>
                         <h3>My CVs</h3>
                             <?php
                                 include("manage/_db-conf/dbconf.php");
