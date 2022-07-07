@@ -47,7 +47,12 @@
                                 $rws = $result->fetch_array();
                                 
                                 $sql2 = "SELECT * FROM ".$prefix."cvuserrec WHERE userid= '$userid'";
-                                $result2 = $db->conn->query($sql2);                            
+                                $result2 = $db->conn->query($sql2);  
+                                $cvnum = mysqli_num_rows($result2); 
+                                
+                                if($cvnum==0){
+                                    echo "<div class='error-red'>Add a CV first before applying for a job.</div>";
+                                }else{
                         ?>
                         
                         <form action="controller/applyjob.php" method="POST" class="contactForm">
@@ -82,6 +87,7 @@
                         </form>
 
                         <?php 
+                                }
                                 }else{
                                     echo "You have already applied for this job! <br /><br ><a href='viewjobs.php' class='btn-yellow_rounded'>Go back</a>";
                                 }
