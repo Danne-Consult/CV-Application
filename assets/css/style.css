@@ -315,7 +315,7 @@ nav .last a:hover{background-color:#fbf4a6;}
 .mainbar a:hover .useractions{background-color:#feed40; }
 
 .addbtnbx, .delbtnbx{display: flex; justify-content: center; float: left;}
-.addbtnbx i, .delbtnbx i{padding: 39px 17px 14px 17px;  font-size: 25px;}
+.addbtnbx i, .delbtnbx i{padding: 39px 17px 14px 17px;  font-size: 25px; margin: 7px 21px;}
 
 .smalltext{font-size: 12px; color: #666;}
 
