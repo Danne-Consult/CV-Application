@@ -379,6 +379,8 @@ nav .last a:hover{background-color:#fbf4a6;}
 .contactForm .submit:hover, .contactForm .submit:focus{background-color:#c8c496;}
 .disabledbtn{background-color:#ccc !important}
 
+.contactForm i{margin-left:-34px;}
+
 .contactForm i.italic{margin:0px; color:#999; font-size:12px;}
 
 footer{ padding: 0x;  position: relative; background-color:#24678C; color:#fff;}
