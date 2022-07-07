@@ -104,7 +104,7 @@
         </div>
         <div class="row">
             <div class="col-lg-10">
-                <label for="schoolcomment">Achievements/Comments</label><br />
+                <label for="schoolcomment">Area of Study/Course</label><br />
                 <textarea rowspan="3" class="editor" name="schoolcomment[]" ></textarea>
             </div>
             <div class="col-lg-2">
@@ -137,7 +137,7 @@
         </div>
         <div class="row">
             <div class="col-lg-10">
-                <label for="workcomment">Achievements/Comments</label><br />
+                <label for="workcomment">Key Responsibilities</label><br />
                 <textarea rowspan="3" class="editor" name="workcomment[]" ></textarea>
             </div>
             <div class="col-lg-2">
