@@ -52,6 +52,7 @@
                                 $result = $db->conn->query($sql);
                                 $rws = $result->fetch_array();
                                 $passhash = $rws['passwd'];
+                                $currdatetime = $currdatetime= date("y-m-d h:i:s");
 
                                 if(password_verify($oldpass,$passhash)){
                                     if($newpass!==$newpassrepeat){
