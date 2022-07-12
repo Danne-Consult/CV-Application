@@ -1,5 +1,6 @@
 <?php
    include "controller/sessioncheck.php";
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +31,51 @@
                     <div class="col-lg-12">
                         <h3>User Management</h3>
                         <?php
-                            include "includes/updateuser.inc";
+                        if(isset($_POST['submit'])){
+
+                            include("manage/_db-conf/dbconf.php");
+                            $db = new DBconnect();
+                                                        
+                            $oldpass = $db->escape_string($_POST["oldpass"]);
+                            $password = $db->escape_string($_POST["password"]);
+                            $repass = $db->escape_string($_POST["repass"]);
+                            
+                            
+
+                            function checkpass($oldpass, $newpass, $newpassrepeat){
+                                $db = new DBconnect();
+                                $prefix = $db->prefix;
+                                $userid = $_SESSION["user"];
+                                date_default_timezone_set('Africa/Nairobi');
+
+                                $sql="SELECT passwd FROM ".$prefix."cvappusers WHERE id = '$userid'";
+                                $result = $db->conn->query($sql);
+                                $rws = $result->fetch_array();
+                                $passhash = $rws['passwd'];
+
+                                if(password_verify($oldpass,$passhash)){
+                                    if($newpass!==$newpassrepeat){
+                                        echo "<div class='error-red'>New password mismatch</div>";
+                                    }else{
+                                        $hashedpw = password_hash($newpass, PASSWORD_DEFAULT);
+                                        $sql1 = "UPDATE ".$prefix."cvappusers SET passwd ='$hashedpw', passwordlastchange ='$currdatetime'  WHERE id = '$userid'";
+
+                                        $result1 = $db->conn->query($sql1);
+
+                                        if($result1){
+                                            echo "<div class='success-green'>Password changed</div>";
+                                        }else{
+                                            echo "<div class='error-red'>Error changing password!</div>";
+                                        }
+                                    }
+                                }else{
+                                    echo "<div class='error-red'>Wrong current password</div>";
+                                }
+                            }
+                            checkpass($oldpass, $password, $repass);
+                        } 
+                         include "includes/updateuser.inc";
                         ?>
-                        
                     </div> 
                 </div>
             </article>
