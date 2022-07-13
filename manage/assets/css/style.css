@@ -322,6 +322,10 @@ nav .last a:hover{background-color:#fbf4a6;}
 .updates .blockimg .block{ position: absolute; top: 6em; width: 60%; padding: 20px; color: #fff;}
 .updates .blockimg .block h2{color:#fff;}
 
+.floatleft{float: left; width: 76%; font-size: 14px;}
+.floatright{float: right; width: 22%; font-size: 14px; display: flex;}
+.floatright a{padding: 9px 5px; background-color: #dedede;}
+
 .contacts{margin-bottom:3em;}
 
 .contactForm{ margin: 0px auto 3em auto;}
@@ -344,6 +348,9 @@ nav .last a:hover{background-color:#fbf4a6;}
 .contactForm input[type="radio"]{width:20px;}
 .contactForm .submit:hover, .contactForm .submit:focus{background-color:#c8c496;}
 .disabledbtn{background-color:#ccc !important}
+
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {  margin: 10px 0px;}
 
 footer{ padding: 0x;  position: relative; background-color:#484848; color:#fff;}
 footer h4{color:#fff;}

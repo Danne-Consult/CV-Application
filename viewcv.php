@@ -89,14 +89,14 @@
                                     
                                     <br /><br />
                                     <h4>About Me</h4>
-                                    <p><?php echo $rws['aboutme'];?></p>
+                                    <?php echo $rws['aboutme'];?>
                                     <hr /><br />               
                                     <h4>Interests</h4>
-                                    <p><?php echo $rws['interests'];?></p>
+                                    <?php echo $rws['interests'];?>
                                     <hr /><br />            
 
 
-                                    <h4>Education</h4>
+                                    <h4>Education Background</h4>
                                     <?php 
                                         $edulist= explode("||", $rws['educationlevel']);
                                         $edulist= array_filter($edulist);
@@ -131,7 +131,7 @@
                                     ?>
                                     <hr /><br />            
                                     <h4>Other Accreditations/Personal Achievements</h4>
-                                    <p><?php echo $rws['achievements'];?></p>
+                                    <?php echo $rws['achievements'];?>
                                     <hr /><br />            
                                     <h4>References</h4>
                                     <div class="row">

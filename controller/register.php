@@ -59,9 +59,10 @@
                     session_regenerate_id();
 	                $new_sessionid = session_id();
 					$rws =  $result->fetch_array();
-					$_SESSION['userid']=$rws['usercode'];
-					$_SESSION['username'] = $rws['firstname'];
-					$_SESSION['lastlogintime'] = time();
+                    $_SESSION['user']= $rws['id'];
+                    $_SESSION['userid']= $rws['usercode'];
+                    $_SESSION['username'] = $rws['firstname'];
+                    $_SESSION['lastlogintime'] = time();
 
                     if(!$_SESSION['userid'] == ""){
                         $sqlx= "UPDATE ".$prefix."cvappusers SET lastlogintime='$currdatetime' WHERE email='$email'";

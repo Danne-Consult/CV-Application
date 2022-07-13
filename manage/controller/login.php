@@ -19,7 +19,7 @@
             if(password_verify($pass,$passhash)){
                 $_SESSION['user']= $rws['id'];
                 $_SESSION['userid']= $rws['userid'];
-                $_SESSION['adminname'] = $rws['username'];
+                $_SESSION['adminname'] = 'Administrator';
                 $_SESSION['usertype'] = $rws['type'];
                 $_SESSION['lastlogintime'] = time();
                 date_default_timezone_set("Africa/Nairobi");
