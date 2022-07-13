@@ -128,11 +128,11 @@
             </div>
             <div class="col-lg-2">
                 <label for="workyearcorfrom">From</label><br />
-                <input type="month" name="workyearfrom[]" />
+                <input type="month" name="workyearfrom[]" placeholder="YYYY-MM" />
             </div>
             <div class="col-lg-2">
                 <label for="workyearto">To</label><br />
-                <input type="month" name="workyearto[]" />
+                <input type="month" name="workyearto[]" placeholder="YYYY-MM" />
             </div>
         </div>
         <div class="row">
