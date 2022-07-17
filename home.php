@@ -63,7 +63,7 @@
                             $numrows2 = mysqli_num_rows($result2);
 
                             if($numrows2!==0){
-                            echo "<p class='smalltext'>".$numrows."/3 CVs Created</p>";
+                            echo "<p class='smalltext'>".$numrows2."/3 CVs Created</p>";
                             ?>
                             <table>
                                 <tr>
