@@ -36,108 +36,116 @@
                     <div class="col-lg-12">
                         <h3>Add CV</h3>
                         <?php 
-                           if(isset($_POST['submit'])){
-                              
-                            
-                            date_default_timezone_set('Africa/Nairobi');
-                           
-                               $title = $db->escape_string($_POST["cvtitle"]);
-                               $dob = $db->escape_string($_POST["dob"]);
-                               $nationality = $db->escape_string($_POST["nationality"]);
-                               $mobile = $db->escape_string($_POST["mobileno"]);
-                               $address = $db->escape_string($_POST["address"]);
-                               $postalcode = $db->escape_string($_POST["postalcode"]);
-                               $languages = $db->escape_string($_POST["languages"]);
-                               $aboutme = $db->escape_string($_POST["aboutme"]);
-                               $educationlevel = $_POST["educationlevel"];
-                               $institution = $_POST["institution"];
-                               $comyearfrom = $_POST["comyearfrom"];
-                               $comyearto = $_POST["comyearto"];
-                               $schoolcomment = $_POST["schoolcomment"];
-                               $company = $_POST["company"];
-                               $occupation = $_POST["occupation"];
-                               $workyearfrom = $_POST["workyearfrom"];
-                               $workyearto = $_POST["workyearto"];
-                               $workcomment = $_POST["workcomment"];
-                               $achievements = $db->escape_string($_POST["achievements"]);
-                               $skill = $_POST["skill"];
-                               $capacity = $_POST["capacity"];
-                               $facebook = $db->escape_string($_POST["facebook"]);
-                               $twitter = $db->escape_string($_POST["twitter"]);
-                               $linkedin = $db->escape_string($_POST["linkedin"]);
-                               $interests = $db->escape_string($_POST["interests"]);
-                               $refname = $_POST["refname"];
-                               $orgcom = $_POST["orgcom"];
-                               $reftitle = $_POST["reftitle"];
-                               $refemail = $_POST["refemail"];
-                               $reftel = $_POST["reftel"];
-                               
-                               $numinstitute = count($institution);
-                               $numwork = count($company);
-                               $numskills = count($skill);
-                               $refnum = count($refname);
-                               
-                           
-                               $instcontext = "";
-                               $workcontext = "";
-                               $skillcontext = "";
+                            $checksql="SELECT * FROM ".$prefix."cvuserrec WHERE userid='$userid'";
+                            $checkres=$db->conn->query($checksql);
+                            $checknum = mysqli_num_rows($checkres);
+                            if($checknum >= 3){
+                                echo "<div class='error-red'>You have reached your maximum number of CVs</div>";
 
-                               $currdate = date("y-m-d h:i:s");
-                           
-                               for($i=0;$i<$numinstitute;$i++){
-                                   if($institution[$i]!=""){
-                                    $edulevel = $educationlevel[$i];  
-                                    $inst = $institution[$i];
-                                    $comyearfr = $comyearfrom[$i];
-                                    $comto = $comyearto[$i];
-                                    $schoolcom = $schoolcomment[$i];
-                                   }
-                                  $instcontext .=  "||/~". $edulevel ."/~" . $inst ."/~". $comyearfr ."-". $comto ."/~". $schoolcom; 
-                              }
-                           
-                              for($x=0;$x<$numwork;$x++){
-                                   if($company[$x]!=""){
-                                   $companys = $company[$x];
-                                   $occupations = $occupation[$x];
-                                   $workyfr = $workyearfrom[$x];
-                                   $workyto = $workyearto[$x];
-                                   $workcom = $workcomment[$x];
-                                   }
-                                   $workcontext .=  "||/~". $companys ."/~" . $occupations ."/~" . $workyfr ."~". $workyto ."/~". $workcom; 
-                               }
+                            }else{
 
-                               for($y=0;$y<$numskills;$y++){
-                                if($skill[$y]!=""){
-                                $skills = $skill[$y];
-                                $range = $capacity[$y];
-                                }
-                                $skillcontext .=  "||/~". $skills ."/~" . $range; 
-                                }
+                                if(isset($_POST['submit'])){
 
-                                for($z=0;$z<$refnum;$z++){
-                                    if($refname[$z]!=""){
-                                    $refnames = $refname[$z];
-                                    $orgcoms = $orgcom[$z];
-                                    $reftitles = $reftitle[$z];
-                                    $refemails = $refemail[$z];
-                                    $reftels = $reftel[$z];
+                                        date_default_timezone_set('Africa/Nairobi');
+                                
+                                        $title = $db->escape_string($_POST["cvtitle"]);
+                                        $dob = $db->escape_string($_POST["dob"]);
+                                        $nationality = $db->escape_string($_POST["nationality"]);
+                                        $mobile = $db->escape_string($_POST["mobileno"]);
+                                        $address = $db->escape_string($_POST["address"]);
+                                        $postalcode = $db->escape_string($_POST["postalcode"]);
+                                        $languages = $db->escape_string($_POST["languages"]);
+                                        $aboutme = $db->escape_string($_POST["aboutme"]);
+                                        $educationlevel = $_POST["educationlevel"];
+                                        $institution = $_POST["institution"];
+                                        $comyearfrom = $_POST["comyearfrom"];
+                                        $comyearto = $_POST["comyearto"];
+                                        $schoolcomment = $_POST["schoolcomment"];
+                                        $company = $_POST["company"];
+                                        $occupation = $_POST["occupation"];
+                                        $workyearfrom = $_POST["workyearfrom"];
+                                        $workyearto = $_POST["workyearto"];
+                                        $workcomment = $_POST["workcomment"];
+                                        $achievements = $db->escape_string($_POST["achievements"]);
+                                        $skill = $_POST["skill"];
+                                        $capacity = $_POST["capacity"];
+                                        $facebook = $db->escape_string($_POST["facebook"]);
+                                        $twitter = $db->escape_string($_POST["twitter"]);
+                                        $linkedin = $db->escape_string($_POST["linkedin"]);
+                                        $interests = $db->escape_string($_POST["interests"]);
+                                        $refname = $_POST["refname"];
+                                        $orgcom = $_POST["orgcom"];
+                                        $reftitle = $_POST["reftitle"];
+                                        $refemail = $_POST["refemail"];
+                                        $reftel = $_POST["reftel"];
+                                        
+                                        $numinstitute = count($institution);
+                                        $numwork = count($company);
+                                        $numskills = count($skill);
+                                        $refnum = count($refname);
+                                        
+                                    
+                                        $instcontext = "";
+                                        $workcontext = "";
+                                        $skillcontext = "";
+
+                                        $currdate = date("y-m-d h:i:s");
+                                    
+                                        for($i=0;$i<$numinstitute;$i++){
+                                            if($institution[$i]!=""){
+                                                $edulevel = $educationlevel[$i];  
+                                                $inst = $institution[$i];
+                                                $comyearfr = $comyearfrom[$i];
+                                                $comto = $comyearto[$i];
+                                                $schoolcom = $schoolcomment[$i];
+                                            }
+                                            $instcontext .=  "||/~". $edulevel ."/~" . $inst ."/~". $comyearfr ."-". $comto ."/~". $schoolcom; 
+                                        }
+                                    
+                                        for($x=0;$x<$numwork;$x++){
+                                            if($company[$x]!=""){
+                                            $companys = $company[$x];
+                                            $occupations = $occupation[$x];
+                                            $workyfr = $workyearfrom[$x];
+                                            $workyto = $workyearto[$x];
+                                            $workcom = $workcomment[$x];
+                                            }
+                                            $workcontext .=  "||/~". $companys ."/~" . $occupations ."/~" . $workyfr ."~". $workyto ."/~". $workcom; 
+                                        }
+
+                                        for($y=0;$y<$numskills;$y++){
+                                            if($skill[$y]!=""){
+                                            $skills = $skill[$y];
+                                            $range = $capacity[$y];
+                                            }
+                                            $skillcontext .=  "||/~". $skills ."/~" . $range; 
+                                            }
+
+                                            for($z=0;$z<$refnum;$z++){
+                                                if($refname[$z]!=""){
+                                                $refnames = $refname[$z];
+                                                $orgcoms = $orgcom[$z];
+                                                $reftitles = $reftitle[$z];
+                                                $refemails = $refemail[$z];
+                                                $reftels = $reftel[$z];
+                                                }
+                                                $refs .=  "||/~". $refnames ."/~" . $reftitles ."/~" . $orgcoms  ."/~" . $refemails ."/~" . $reftels; 
+                                            }
+
+
+                                        $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, achievements, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$achievements','$skillcontext','$refs','$facebook','$twitter','$linkedin','$currdate')";
+
+                                    
+                                        $register = $db->conn->query($sql);
+                                    
+                                            if($register){  
+                                                echo "<div class='success-green'>Registration Successful!</div>";  
+                                            }else{  
+                                                echo "<div class='error-red'>Error: Cannot save information</div>";  
+                                            }
                                     }
-                                    $refs .=  "||/~". $refnames ."/~" . $reftitles ."/~" . $orgcoms  ."/~" . $refemails ."/~" . $reftels; 
-                                }
-
-
-                               $sql = "INSERT INTO ".$prefix."cvuserrec (userid, title, dateofbirth, mobile, nationality, address, postalcode, languages, interests, aboutme, educationlevel, experience, achievements, skills, referencesx, facebook, twitter, linkedin, datecreated) VALUES ('$userid','$title','$dob','$mobile','$nationality','$address','$postalcode','$languages','$interests','$aboutme','$instcontext','$workcontext','$achievements','$skillcontext','$refs','$facebook','$twitter','$linkedin','$currdate')";
-
-                        
-                               $register = $db->conn->query($sql);
-                           
-                                if($register){  
-                                    echo "<div class='success-green'>Registration Successful!</div>";  
-                                }else{  
-                                    echo "<div class='error-red'>Error: Cannot save information</div>";  
-                                }
-                           }
-                            include "includes/addcv.inc";
+                                include "includes/addcv.inc";
+                            }
                         ?>
                     </div> 
                 </div>
