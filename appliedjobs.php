@@ -35,6 +35,7 @@
                                 $prefix = $db->prefix;
                                 $userid = $_SESSION['user'];
                                 $resultsperpage = 10; 
+                                $pagLink="";
 
                                 $sqljb = "SELECT * FROM ".$prefix."userjobs WHERE userid='$userid'";  
                                 $resultjb = $db->conn->query($sqljb);  
@@ -115,10 +116,6 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
 </body>
 </html>

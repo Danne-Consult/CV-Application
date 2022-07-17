@@ -55,10 +55,6 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
 </body>
 </html>

@@ -26,7 +26,7 @@
                 ?>
                 <?php include "includes/register.inc"; ?>
             </div>
-            <div class="logcopy">&copy;2022 Danne Consult Ltd</div>
+            <div class="logcopy">&copy;2022. Open Talent Africa | Designed By <a href="mailto:design@danneconsult.com">Danne Consult</a></div>
         </div>
     </div>
 

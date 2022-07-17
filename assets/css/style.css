@@ -299,20 +299,22 @@ nav .last a:hover{background-color:#fbf4a6;}
 .logform{width: 66%;}
 .logbx .logoimg{width: 167px; margin-bottom: 30px;}
 .logbx h2{font-weight: 300; text-align: center;}
-.logbx .logcopy{font-size: 11px;}
-
 .signform{display: flex; flex-flow: column; width: 43%; align-items: center; flex-direction: column; margin: 2em auto 0px auto; padding: 30px; background-color: #fbfbfb;}
 .signform .logo{text-align:center;}
-
 .logform{width: 66%;}
 .signform .logoimg{width: 167px; margin-bottom: 30px;}
 .signform h2{font-weight: 300; text-align: center;}
-.signform .logcopy{font-size: 11px;}
+
+.signform .logcopy, .logbx .logcopy{font-size: 10px;}
+.signform .logcopy a, .logbx .logcopy a{ font-weight: 700;}
 
 .mainbar a{text-decoration: none;}
 
 .mainbar .useractions{background-color: #fffcd0; padding: 37px 20px 27px 20px; margin-bottom: 3em; transition: all 0.3s ease-in-out;}
 .mainbar a:hover .useractions{background-color:#feed40; }
+
+.dash{ padding: 20px 20px 30px 20px;}
+.jobboard{background-color:#f3f3f3;}
 
 .addbtnbx, .delbtnbx{display: flex; justify-content: center; float: left;}
 .addbtnbx i, .delbtnbx i{padding: 39px 17px 14px 17px;  font-size: 25px; margin: -4px 6px -2px 6px !important;}
@@ -399,6 +401,7 @@ footer .social li{display:inline; margin: 0px 3px; font-size:16px;}
 footer .social li a{border-radius: 200px; padding: 8px 8px; color: #fff;}
 
 footer .copy{font-size: 10px; font-weight: 400; padding: 13px 0px 13px 0px;  margin-top: 0; }
+footer .copy a{color:#fff; font-weight:700;}
 
 @media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px)  {
 .bodycont{width:100%; margin:0px auto;}

@@ -82,11 +82,7 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
     <script>
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#password");
