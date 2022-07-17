@@ -315,6 +315,7 @@ nav .last a:hover{background-color:#fbf4a6;}
 
 .dash{ padding: 20px 20px 30px 20px;}
 .jobboard{background-color:#f3f3f3;}
+.jobboard h5 span{font-size: 14px;}
 
 .addbtnbx, .delbtnbx{display: flex; justify-content: center; float: left;}
 .addbtnbx i, .delbtnbx i{padding: 39px 17px 14px 17px;  font-size: 25px; margin: -4px 6px -2px 6px !important;}
