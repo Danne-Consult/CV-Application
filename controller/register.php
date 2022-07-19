@@ -55,6 +55,7 @@
 				$result =  $db->conn->query($sql2);
 				$trws = mysqli_num_rows($result);
 				if($trws==1){
+
                     session_start();
                     session_regenerate_id();
 	                $new_sessionid = session_id();

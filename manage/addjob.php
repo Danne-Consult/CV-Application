@@ -59,9 +59,9 @@
                                 $addjb = $db->conn->query($sql);
                             
                                 if($addjb){  
-                                    echo "Job added!";  
+                                    echo "<div class='success-green'>Job added!</div>";  
                                 }else{  
-                                    echo "Error: Cannot save information";  
+                                    echo "<div class='error-red'>Cannot save information</div>";  
                                 }
                             }
                         ?>
@@ -69,11 +69,7 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
     <script src="assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         

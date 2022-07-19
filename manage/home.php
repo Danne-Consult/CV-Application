@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home:CV App</title>
+    <title>Home : Manager CV App</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawesome/css/all.css">
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <a href="viewusers.php">
+                        <a href="usermanagement.php">
                             <div class="useractions">
                                 <h4>View users</h4>
                                 <p>View User information</p>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <a href="viewapplieduser.php">
+                        <a href="viewappliedjobs.php">
                             <div class="useractions">
                                 <h4>View Applied Jobs</h4>
                                 <p>See users who applied to jobs</p>
@@ -66,10 +66,6 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
 </body>
 </html>

@@ -191,6 +191,9 @@ tr:hover{background-color:#F9F7F7;}
 .btn-grey_rounded{background-color: #eaeaea;  padding: 15px 34px;  color: #171717;  text-decoration: none;  border-radius: 7px;  font-size: 95%; transition: all 0.3s ease-in-out;}
 .btn-grey_rounded:hover{background-color:#ebebeb;}
 
+.success-green{background-color: #e1ecd4; padding: 10px; margin-bottom: 30px; color: #2b701b; border-radius: 4px;}
+.error-red{background-color: #ecd4d4; padding: 10px; margin-bottom: 30px; color: #721c1c; border-radius: 4px;}
+
 .arrow{width:27px;}
 
 .clearfix{clear:both;}
@@ -305,6 +308,7 @@ nav .last a:hover{background-color:#fbf4a6;}
 
 .mainbar .useractions{background-color: #fffcd0; padding: 37px 20px 27px 20px; margin-bottom: 3em; transition: all 0.3s ease-in-out;}
 .mainbar a:hover .useractions{background-color:#feed40; }
+.mainbar h4 span{ font-size: 15px;}
 
 .addbtnbx{display: flex; justify-content: center;}
 .addbtnbx i{padding: 39px 30px 14px 30px;  font-size: 25px;}
@@ -325,6 +329,13 @@ nav .last a:hover{background-color:#fbf4a6;}
 .floatleft{float: left; width: 76%; font-size: 14px;}
 .floatright{float: right; width: 22%; font-size: 14px; display: flex;}
 .floatright a{padding: 9px 5px; background-color: #dedede;}
+
+.attacheddoc{text-align: center;width: 109px; background: #efefef; margin-bottom: 20px; margin-top: 20px; height: 140px; padding: 35px 0px 30px 0px; color: #114356; font-weight: 700; border-radius: 4px; box-shadow: 1px 2px 7px #c6c6c6; float: left;}
+.attacheddoc i{font-size: 43px;}
+.attacheddoc:hover{box-shadow: 1px 2px 7px #999999;}
+
+.modal{display: inline-block; max-width: 134vh; position: relative !important;}
+.close-modal{display:none !important;}
 
 .contacts{margin-bottom:3em;}
 
@@ -368,6 +379,7 @@ footer .social li{display:inline; margin: 0px 3px; font-size:16px;}
 footer .social li a{border-radius: 200px; padding: 8px 8px; color: #fff;}
 
 footer .copy{font-size: 10px; font-weight: 400; padding: 13px 0px 13px 0px;  margin-top: 0; }
+footer .copy a{color:#fff; font-weight:700;}
 
 @media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px)  {
 .bodycont{width:100%; margin:0px auto;}

@@ -16,6 +16,7 @@
 
         if($trws==1){
             if(password_verify($pass,$passhash)){
+                
                 $_SESSION['user']= $rws['id'];
                 $_SESSION['userid']= $rws['usercode'];
                 $_SESSION['username'] = $rws['firstname'];

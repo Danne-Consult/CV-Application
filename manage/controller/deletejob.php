@@ -14,9 +14,9 @@
         $result = $db->conn->query($sql);
     
         if($result){
-            header("Location:".$_SERVER['HTTP_REFERER']."?message=CV deleted");
+            header("Location:".$_SERVER['HTTP_REFERER']."&message=CV deleted");
         }else{
-            header("Location:".$_SERVER['HTTP_REFERER']."?error=Error deleting record");
+            header("Location:".$_SERVER['HTTP_REFERER']."&error=Error deleting record");
         }
     }
 

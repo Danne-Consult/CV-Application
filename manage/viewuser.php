@@ -32,119 +32,67 @@
             <article>
                 <?php
                     $userid = $_GET['recid'];
-                    $sql="SELECT * FROM ".$prefix."cvappusers a LEFT JOIN ".$prefix."cvuserrec b ON a.id=b.userid WHERE a.id='$userid'";
+                    $sql="SELECT * FROM ".$prefix."cvappusers WHERE id='$userid'";
                     $result= $db->conn->query($sql);
                     $rws = $result->fetch_array();
                 ?>
-                <div class="row">
-                    <div class="col-lg-12">
-                    <div class="alignright"><a href="mailto:<?php echo $rws['email']; ?>" class="btn-yellow_rounded" title="Contact User">Contact User <i class="fas fa-envelope"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn-yellow_rounded" id="printcv" title="Print CV">Print Record <i class="fas fa-print"></i></a></div>
-                        <h3>View User</h3>
-                        
-                        <h2><?php echo $rws['firstname']; ?> <?php echo $rws['lastname']; ?></h2>
-                        <p><b>Sector:</b> <?php echo $rws['sector']; ?></p> 
-                        <div class="socials">
-                            <a href="<?php echo $rws['facebook'];?>" target="_new"><i class="fa-brands fa-facebook"></i></a>&nbsp;
-                            <a href="<?php echo $rws['twitter'];?>" target="_new"><i class="fa-brands fa-twitter"></i></a> &nbsp;
-                            <a href="<?php echo $rws['linkedin'];?>" target="_new"><i class="fa-brands fa-linkedin"></i></a>
-                        </div>
-                        <hr />
-                        <h4>General Information</h4>
-                        <div class="row">
-                            <div class="col-lg-4"> 
-                                <p><b>Gender:</b> <?php echo $rws['gender']; ?></p> 
-                            </div>
-                            <div class="col-lg-4"> 
-                                <p><b>Email:</b> <?php echo $rws['email']; ?></p> 
-                            </div>
-                            <div class="col-lg-4"> 
-                                <p><b>Tel:</b> <?php echo $rws['mobile']; ?></p> 
-                            </div>
-                            <div class="col-lg-4"> 
-                                <p><b>Nationality:</b> <?php echo $rws['nationality']; ?></p> 
-                            </div>
-                            <div class="col-lg-4"> 
-                                <p><b>Country:</b> <?php echo $rws['country']; ?></p> 
-                            </div>
-                            <div class="col-lg-4"> 
-                                <p><b>postal Address:</b> <?php echo $rws['address']; ?> - <?php echo $rws['postalcode']; ?></p> 
-                            </div>
-                            <div class="col-lg-4"> 
-                                <p><b>Languages:</b> <?php echo $rws['languages']; ?></p> 
-                            </div>
-                        </div>
-                        <hr >
 
-                        <h4>Brief About me</h4>
-                        <?php echo $rws['aboutme']; ?>
-                        <hr />
-                        <h4>Interests</h4>
-                        <?php echo $rws['interests']; ?>
-                        <hr />
-                        <h4>Education background</h4>
-                        <?php
-                            $edulist= explode("||", $rws['educationlevel']);
-                            $edulist= array_filter($edulist);
-                            
-                            $edulistcount = count($edulist);
-                            $edu = "";
-                            foreach($edulist as $key => $value)
-                                {
-                                    $edulist = explode("/~",$value);	
-                    
-                                    $edu= '<div class="edubx"><h5>'.$edulist[1].'<br /><span>'. $edulist[2] .' : '.$edulist[3] .'</span></h5><p>'.$edulist[4] .'</p></div>';
-                                    echo $edu;
-                                }
-                        ?>
-                        <hr />
-                        <h4>Work Experience</h4>
-                        <?php 
-                            $wklist= explode("||", $rws['experience']);
-                            $wklist= array_filter($wklist);
-                            
-                            $workcount = count($wklist);
-                            $edu = "";
-                            foreach($wklist as $key => $value)
-                                {
-                                    $wklist = explode("/~",$value);	
-                                    $monthz = explode("~",$wklist[3]);
-                    
-                                    $works= '<div class="edubx"><h5>'.$wklist[1].'<br /><span>'. $wklist[2] .' : '. date('M-Y', strtotime($monthz[0])) .' to '. date('M-Y', strtotime($monthz[1])) .' </span></h5><p>'.$wklist[4] .'</p></div>';
-                                    echo $works;
-                                }
-                        ?>
-                        <hr />
-                        <h4>Other Accreditations</h4>
-                        <?php echo $rws['achievements'];?>
-                        <hr />
-                        <h4>Referees</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="alignright"><a href="mailto:<?php echo $rws['email']; ?>" class="btn-yellow_rounded" title="Contact User">Contact User <i class="fas fa-envelope"></i></a></div>
+                        <h3>View User</h3><br />
+                        <h4><?php echo $rws['firstname'] ." ". $rws['lastname']; ?></h4>
                         <div class="row">
-                        <?php 
-                            $refs= explode("||", $rws['referencesx']);
-                            $refs= array_filter($refs);
-                            
-                            $refcount = count($refs);
-                            $reference = "";
-                            foreach($refs as $key => $value)
-                                {
-                                    $reflist = explode("/~",$value);	
-                    
-                                    $reference= '<div class="col-lg-4 refbx">'.$reflist[1].'<br />'. $reflist[2] .'<br />'. $reflist[3] .'<br /><i class="fas fa-at"></i> '.$reflist[4] .'<br /><i class="fas fa-phone"></i> '.$reflist[5] .'</div>';
-                                    echo $reference;
-                                }
-                        ?>
+                            <div class="col-lg-4">
+                                <p><b>Sector:</b> <?php echo $rws['sector']; ?><br />
+                                <b>Email</b>: <?php echo $rws['email']; ?><br /></div>
+                            <div class="col-lg-4">
+                                <b>gender</b>: <?php echo $rws['gender']; ?><br />
+                                <b>Country</b>: <?php echo $rws['country']; ?></p>
+                            </div>
                         </div>
-                       
-                    </div>
+                        
+                        
                 </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>User CVs</h4>
+                    <?php
+                        $sql1="SELECT * FROM ".$prefix."cvuserrec WHERE userid='$userid'";
+                        $result1= $db->conn->query($sql1);
+                        $numrows1 = mysqli_num_rows($result1);
+                        if($numrows1!==0){
+                            echo "<p class='smalltext'>".$numrows1."/3 CVs Created</p>";
+                            ?>
+                            <table>
+                                <tr>
+                                    <th>CV Title</th>
+                                    <th>Action</th>
+                                </tr>
+                                <?php 
+                                    
+                                    while ($rws1 = $result1->fetch_array()) {
+                                        $tr ="<tr><td>".$rws1['title']."</td><td><a title='View CV' href='viewcv.php?recid=".$rws1['id']."'><i class='fa-solid fa-eye'></i></a> </td></tr>";
+
+                                        echo $tr;
+
+                                    }
+                                ?>
+                            </table>
+                            <?php }else{
+                                echo "No CVs Added!";
+                            }
+                        ?>
+                </div>
+            </div>
+                
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
     <script>
         $(document).ready(function(){
             $('#printcv').click(function(){

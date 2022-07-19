@@ -51,11 +51,7 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
     <script>
         $('.confirmation').on('click', function () {
             return confirm('Are you sure you want to delete this CV template?');

@@ -18,9 +18,9 @@
         $result = $db->conn->query($sql);
 
         if($result){
-            header("Location:".$_SERVER['HTTP_REFERER']."?message=Successfully applied");
+            header("Location:".$_SERVER['HTTP_REFERER']."&message=Successfully applied");
         }else{
-            header("Location:".$_SERVER['HTTP_REFERER']."?error=Error applying for job");     
+            header("Location:".$_SERVER['HTTP_REFERER']."&error=Error applying for job");     
         }
 
     }else{

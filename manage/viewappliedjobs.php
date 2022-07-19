@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Users : Manager CV App</title>
+    <title>Applied Jobs : Manager CV App</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
@@ -32,40 +32,37 @@
             <article>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>View Users</h3>
+                        <h3>Job Applications</h3>
+                        <?php 
+                            if(isset($_GET['error'])){
+                                $error = $_GET['error'];
+                                echo "<div class='error-red'>".$error."</div>";
+                            }
+
+                            $sql1="SELECT *, COUNT(*) FROM ".$prefix."userjobs a LEFT JOIN ".$prefix."jobs b ON a.jobid=b.id GROUP BY a.jobid";
+                            $result1 = $db->conn->query($sql1);
+                        ?>
                         <table id="sorttable">
                             <thead>
                                 <tr>
-                                    <th>User Names</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    <th>Country</th>
-                                    <th>Status</th>
-
+                                    <th>Job title</th>
+                                    <th>Number of Applicants</th>
+                                    <th>Submission End Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-                                $status = "";
-                                $sql = "SELECT * FROM ".$prefix."cvappusers ORDER BY 'id' DESC";
+                                <?php
+                                while($rws = $result1->fetch_array()) {
 
-                                $result = $db->conn->query($sql);
-                                while ($rws = $result->fetch_array()) {
-                                    if($rws['status']==1){ 
-                                            $status = "<span style='color:#2b701b'>Blocked</span>";
-                                        }else{
-                                            $status = "Unblocked";
+                                            $tr ="<tr><td>".$rws['job_title']."</td><td>".$rws['COUNT(*)']."</td>";
+                                            $tr .="<td>".$rws['submitdate']."</td>";
+                                            $tr .="<td><a title='View Applicants' href='viewapplicants.php?recid=".$rws['id']."'><i class='fa-solid fa-eye'></i></a></td></tr>";
+
+                                            echo $tr;
+
                                         }
-
-                                    $tr ="<tr><td>".$rws['firstname']." ".$rws['lastname']."</td><td>".$rws['gender']."</td><td>".$rws['email']."</td><td>".$rws['country']."</td>";
-                                    $tr .="<td>".$status."</td>";
-                                    $tr .="<td><a title='View CV' href='viewuser.php?recid=".$rws['id']."'><i class='fa-solid fa-eye'></i></a>&nbsp; &nbsp; <a title='Block User' href='controller/blockuder.php' class='unpublish'><i class='fas fa-times-circle'></i></a></td></tr>";
-
-                                    echo $tr;
-
-                                }
-                            ?>
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -73,11 +70,7 @@
             </article>
         </div>
     </div>
-    <footer>
-        <article>
-            <div class="copy">&copy;2022. Open Talent Africa</div>
-        </article>
-    </footer>
+    <?php include "includes/footer.inc"; ?>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function(){

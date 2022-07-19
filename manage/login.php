@@ -47,7 +47,7 @@
                     
                 </form>
             </div>
-            <div class="logcopy">&copy;2022 Open Talent Africa</div>
+            <div class="logcopy">&copy;2022. Open Talent Africa | Designed By <a href="mailto:design@danneconsult.com">Danne Consult</a></div>
         </div>
     </div>
 </body>
