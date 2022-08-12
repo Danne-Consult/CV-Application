@@ -154,9 +154,11 @@
                                 </div>
                                 <hr />
                             </div>
-                            <div class="alignright"><a href="appliedjobs.php" class="btn-yellow_rounded" title="View applied Jobs">See More <i class="fas fa-eye"></i></a></div>
                             <?php 
                              }
+                             ?>
+                             <div class="alignright"><a href="appliedjobs.php" class="btn-yellow_rounded" title="View applied Jobs">See More <i class="fas fa-eye"></i></a></div>
+                             <?php
                             }else{
                                 echo "No jobs applied!";
                             }
